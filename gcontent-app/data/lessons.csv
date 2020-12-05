@@ -1,0 +1,13 @@
+lesson,topics,repo,checkpoint
+developer-tools,git;cli,https://github.com/GalvanizeDataScience/developer-tools,https://learn-2.galvanize.com/static/1001
+python-essentials-1,python-env;python-datatypes;python-continers,https://github.com/GalvanizeDataScience/python-essentials-1,https://learn-2.galvanize.com/static/1001
+python-essentials-2,python-controlflow;python-logicals,https://github.com/GalvanizeDataScience/python-essentials-2,https://learn-2.galvanize.com/static/1002
+python-programming-1,python-functions,https://github.com/GalvanizeDataScience/functions,https://learn-2.galvanize.com/static/1003
+python-programming-2,python-oop;oop,https://github.com/GalvanizeDataScience/oop,https://learn-2.galvanize.com/static/1004
+python-numpy,numpy;linear-algebra,https://github.com/GalvanizeDataScience/numpy,https://learn-2.galvanize.com/static/1005
+python-datasets-1,python-fileio;python-datasets,https://github.com/GalvanizeDataScience/datasets,https://learn-2.galvanize.com/static/1006
+python-datasets-2,pandas,https://github.com/GalvanizeDataScience/pandas,https://learn-2.galvanize.com/static/1007
+case-study-pandas,pandas,https://github.com/GalvanizeDataScience/case-study-pandas,https://learn-2.galvanize.com/static/1008
+python-datavis-1,matplotlib,https://github.com/GalvanizeDataScience/datavis1,https://learn-2.galvanize.com/static/1009
+python-datavis-2,dash,https://github.com/GalvanizeDataScience/datavis2,https://learn-2.galvanize.com/static/1010
+hpc,hpc;profiling,https://github.com/GalvanizeDataScience/hpc,https://learn-2.galvanize.com/static/1011

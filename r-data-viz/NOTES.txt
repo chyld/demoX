@@ -1,0 +1,2 @@
+* `Nature article on Git and scientific reproducibility <http://blogs.nature.com/naturejobs/2018/06/11/git-the-reproducibility-tool-scientists-love-to-hate/>\
+`_ 

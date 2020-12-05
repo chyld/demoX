@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>High-Performance Computing &mdash; High-Performance Computing</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #000099" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> High-Performance Computing
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">HPC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming.html">Parallel Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparse-matrices.html">Sparse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocessing.html">Subprocessing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">APPENDICES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cython.html">Cython</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">High-Performance Computing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>High-Performance Computing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="high-performance-computing">
+<h1>High-Performance Computing<a class="headerlink" href="#high-performance-computing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 24%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit</p></th>
+<th class="head"><p>Main Topics</p></th>
+<th class="head"><p>Learning Objectives</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Parallel Programming</p></td>
+<td><p>Describe some algorithms and data structures that contribute to fast code.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Multiprocessing</p></td>
+<td><p>Use the multiprocessing module parallelize operations in python</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Sparse Matrices</p></td>
+<td><p>Explain when to use sparse matrices during the machine learning model development process</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Subprocessing</p></td>
+<td><p>Use the subprocess module to optimize python and other types of code</p></td>
+</tr>
+</tbody>
+</table>
+<p>There are so many ways to pull in additional compute power to speed up your machine learning through the use of remote
+computing, be it AWS, another cloud service or an in-house cluster.
+<strong>This does not mean you have to scale that way</strong>.
+Before you invest time and money into additional compute resources, you should be sure that your code is fully
+optimized for performance, first.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Throwing more hardware at a problem should not be the first step in an a code optimization process… the first
+step should be better code.</p>
+</div>
+<p>Modern computers have multiple cores and hyper-threaded processors now.  You may be surprised by how much more your
+computer can do when you consider this and a few other things.  This course will help you better harness the potential
+of your machine and it will provide a set of guidelines to help you scale using well-written and optimized code.</p>
+<p>Data scientists have more <em>tools</em> available today than ever before to solve problems.  With the availability of more
+efficient tools than ever before there is less of a focus on optimized code.  Also, data science has been increasing in
+popularity so many practicing data scientists only have a few years on the job experience, which means that they are
+less likely to be <strong>aware</strong> of the importance of code optimization.  This course will survey the best practices and
+modern tools used to increase the speed of your code. For some business applications, like
+<a class="reference external" href="https://en.wikipedia.org/wiki/Recommender_system">recommender systems</a>, speed can be directly linked to revenue.</p>
+</div>
+<div class="section" id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">HPC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming.html">Parallel Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparse-matrices.html">Sparse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocessing.html">Subprocessing</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">APPENDICES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cython.html">Cython</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

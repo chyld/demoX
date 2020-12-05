@@ -1,0 +1,108 @@
+/* customization
+ * for ibm
+ */
+
+
+h1.plan, h2.plan, h3.plan {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+ul.plan>li>span.plan-bold {
+    font-size: 110%;
+    padding: 4px;
+    font-weight: bold;
+    background-color: #eee;
+}
+
+ul.plan>li>ul.subplan>li>span.plan-bold {
+    font-weight: bold;
+}
+
+.plan-strike {
+    opacity: 0.4;
+/*    text-decoration: line-through; */
+}
+
+div.plan-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.reveal {
+    font-family: "IBM Plex", sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.reveal p {
+    color: #FFFFFF;
+}
+
+.reveal ul, .reveal ol {
+    color: #FFFFFF;
+}
+
+.reveal a {
+    color: royalblue;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    color: #FFFFFF;
+    text-transform: initial;   /* sky.css says uppercase */
+    letter-spacing: initial;  /* sky.css says -0.08em */
+}
+
+
+.reveal table { 
+    width: 100%;
+    font-size: 50%;
+    overflow: hidden;
+    text-align: left;
+    background-color: #B0B0B0;
+    border-collapse: collapse;
+ }
+.reveal th { 
+    background-color: #484848;
+    color: #FFFFFF;
+    font-size:24px;
+    padding: 10px;
+    border: 2px solid #484848;
+}
+.reveal td {
+    font-size:20px;
+    border: 2px solid #484848; 
+} 
+
+.reveal tr {
+    font-size:20px;
+    border: 2px solid #484848; 
+} 
+
+
+.chTable { 
+    width: 90%;
+    overflow: hidden;
+    text-align: left;
+    background-color: #B0B0B0;
+    border-collapse: collapse;
+    font-size:16px;
+ }
+.chTable th { 
+    background-color: #484848;
+    color: #FFFFFF;
+    text-align: center;
+    font-size:24px;
+    padding: 10px;
+    border: 2px solid #484848;
+}
+.chTable td {
+    font-size:20px;
+    border: 2px solid #484848; 
+} 
+
+.chTable tr {
+    font-size:20px;
+    border: 2px solid #484848; 
+} 
+

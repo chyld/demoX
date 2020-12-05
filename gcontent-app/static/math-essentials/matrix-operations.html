@@ -1,0 +1,722 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Matrix operations &mdash; Math Essentials</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Properties of Matrices" href="matrix-properties.html" />
+    <link rel="prev" title="Thinking in terms of vectors and matrices" href="intro-math.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #000099" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Linear Algebra:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro-math.html">Thinking in terms of vectors and matrices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-reference">Quick reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dimensional-requirements-for-matrix-multiplication">Dimensional requirements for matrix multiplication</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-properties-of-matrices">Basic properties of matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-matrix-operations">Basic matrix operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#special-addition-and-multiplication-operators">Special addition and multiplication operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sorting-arrays">Sorting arrays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-math-functions">Common math functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-operations-exercise">Basic operations exercise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-properties.html">Properties of Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-norms-and-more.html">Matrix norms and more</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decompositions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="helpful-math.html">Helpful math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-numpy.html">Additional NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Matrix operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/matrix-operations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="matrix-operations">
+<h1>Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 95%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Understand the dimensional requirements for matrix multiplication</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Understand and be able to execute <strong>elementwise</strong> arithmetric operators in NumPy</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Become even more comfortable with vectors and matrices in NumPy</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="quick-reference">
+<h2>Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this headline">¶</a></h2>
+<p>Here we provide a summary the important commands that have already been introduced.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>NumPy command</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>a.ndim</p></td>
+<td><p>returns the num. of dimensions or the <strong>rank</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>a.shape</p></td>
+<td><p>returns the num. of rows and colums</p></td>
+</tr>
+<tr class="row-even"><td><p>a.size</p></td>
+<td><p>returns the num. of rows and colums</p></td>
+</tr>
+<tr class="row-odd"><td><p>arange(start,stop,step)</p></td>
+<td><p>returns a sequence vector</p></td>
+</tr>
+<tr class="row-even"><td><p>linspace(start,stop,steps)</p></td>
+<td><p>returns a evenly spaced sequence in the specificed interval</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="dimensional-requirements-for-matrix-multiplication">
+<h2>Dimensional requirements for matrix multiplication<a class="headerlink" href="#dimensional-requirements-for-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>In order for the matrix product (<span class="math notranslate nohighlight">\(A \times B\)</span>) to
+exist, the number of columns in <span class="math notranslate nohighlight">\(A\)</span> must equal
+the number of rows in <span class="math notranslate nohighlight">\(B\)</span>.</p>
+</div>
+<div class="section" id="basic-properties-of-matrices">
+<h3>Basic properties of matrices<a class="headerlink" href="#basic-properties-of-matrices" title="Permalink to this headline">¶</a></h3>
+<p>It is convention to represent vectors as column matrices.  We are
+explicit in this representation in that we define two axes even
+through the number of columns is only one.</p>
+<p>A <strong>column matrix</strong> in NumPy.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{x} =
+\begin{pmatrix}
+3  \\
+4  \\
+5  \\
+6
+\end{pmatrix}\end{split}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Again notice the pair of double brackets</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.T</span></code> indicates a <strong>transpose</strong> operation.  In the case of
+vectors we go from a rowwise representation to a columnwise one and
+vice versa.  We will spend more time on transposes in the next
+section.</p>
+<p>A <strong>row matrix</strong> in NumPy.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}^{T} =
+\begin{pmatrix}
+3 &amp; 4 &amp; 5 &amp; 6
+\end{pmatrix}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>Since this is linear algebra essentials with the goal of preparing you
+for a learning experience in data science, lets introduce a running
+example that will help ground much of the notation and concepts.</p>
+<p>Machine learning can be roughly split into two types of learning problems.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Supervised learning</strong> - learn a mapping from inputs <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to outputs <span class="math notranslate nohighlight">\(y\)</span></p></li>
+<li><p><strong>Unsupervised learning</strong> - given only <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, learn interesting patterns in <span class="math notranslate nohighlight">\(\mathbf{X}\)</span></p></li>
+</ul>
+</div></blockquote>
+<p>An example of this is to predict total snowfall, which would be a
+continuous <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.  When we use a feature matrix
+<span class="math notranslate nohighlight">\(\mathbf{X}\)</span> to predict <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> it is an example of
+<strong>supervised learning</strong>.  Our feature matrix would be a number of
+column vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> horizontally stacked together to
+form <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.  Examples of these features might be: the
+elevation, latitude, average winter temperature, historical snowfall
+data and more..</p>
+<p>If we wanted to discover patterns in <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> then we could
+take an such as clustering, which would be an example of
+<strong>unsupervised learning</strong>.  Patterns in this case would likely
+correspond to mountain ranges and meteorological or oceanic events.</p>
+<p>If we think of the features of a matrix as column vectors.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feature1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">99</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">31</span><span class="p">,</span><span class="mi">14</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">24</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+<p>We can stack them into a matrix using <code class="docutils literal notranslate"><span class="pre">hstack</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">feature1</span><span class="p">,</span><span class="n">feature2</span><span class="p">,</span><span class="n">feature3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span>
+<span class="go">array([[99,  0,  5],</span>
+<span class="go">       [45,  1,  3],</span>
+<span class="go">       [31,  1,  9],</span>
+<span class="go">       [14,  0, 24]])</span>
+</pre></div>
+</div>
+<p>There are easier ways to create matrices, such as reading directly
+from a csv file, but the ability to concatenate matrices is important.
+With <code class="docutils literal notranslate"><span class="pre">hstack</span></code> we <strong>horizontally</strong> stacked our column vectors.  The
+sister function <code class="docutils literal notranslate"><span class="pre">vstack</span></code> allows us to <strong>vertically</strong> stack vectors
+or matrices in a similar way.</p>
+<p>We may access the individual elements of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> through <strong>indexing</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \mathbf{X} =
+\begin{pmatrix}
+ X_{1,1} &amp; X_{1,2} \\
+ X_{2,1} &amp; X_{2,2} \\
+\end{pmatrix}\end{split}\]</div>
+<p>In the above matrix we show how to explicitly refer to any element in
+<span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.  It is also quite common to refer to a generic
+element in <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> as <span class="math notranslate nohighlight">\(\mathbf{X}_{i,j}\)</span>, where if
+you picked up on the pattern indexing occurs by stating the <strong>row</strong> then the <strong>column</strong>.
+In NumPy you are following the same pattern.  Using the feature matrix created above:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">45</span>
+</pre></div>
+</div>
+<p>And if we want to access our first column vector again</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([99, 45, 31, 14])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">array([99, 45, 31, 14])</span>
+</pre></div>
+</div>
+<p>We now see that an array with 2 axes is indexed and even <strong>sliced</strong>
+one axis at a time.  1D arrays can be indexed in the same way a Python
+list can.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="go">array([2, 3])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[:</span><span class="mi">10</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">array([0, 2, 4, 6, 8])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])</span>
+</pre></div>
+</div>
+<p>If we go back to the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix there are many useful functions once we are here including <code class="docutils literal notranslate"><span class="pre">mean</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">array([ 47.25,   0.5 ,  10.25])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([ 34.66666667,  16.33333333,  13.66666667,  12.66666667])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="go">19.333333333333332</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>axis 0 refers to a mean with respect to the columns</p>
+</div>
+</div>
+</div>
+<div class="section" id="basic-matrix-operations">
+<h2>Basic matrix operations<a class="headerlink" href="#basic-matrix-operations" title="Permalink to this headline">¶</a></h2>
+<p>This has already been stated once.  But since it is important lets say it a different way.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to multiply two matrices, they must be
+<strong>conformable</strong> such that the number of columns of the first
+matrix must be the same as the number of rows of the second
+matrix.</p>
+</div>
+<p>When we say multiply two matrices it does not mean multiply in the sense that you might think.
+The <strong>matrix product</strong> of two matrices is another matrix.</p>
+<p>If we have two vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> of the same length <span class="math notranslate nohighlight">\((n)\)</span>, then the <strong>dot product</strong> is given by</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x} \cdot \mathbf{y} = x_1y_1 + x_2y_2 + \cdots + x_ny_n\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Arithmetic operators in NumPy work <strong>elementwise</strong></p>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="go">array([ 2.,  3.,  4.])</span>
+</pre></div>
+</div>
+<p>Something that can be tricky for people familiar with other programming languages is that the * operator
+<strong>does not</strong> carry out a matrix product.  This is done with the
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html">dot</a> function.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[1, 2],</span>
+<span class="go">       [3, 4]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array([[1, 2],</span>
+<span class="go">       [3, 4]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="go">array([[ 1,  4],</span>
+<span class="go">       [ 9, 16]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+<span class="go">array([[ 7, 10],</span>
+<span class="go">       [15, 22]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]))</span>
+</pre></div>
+</div>
+<p>The <strong>dot product</strong> is a very important concept that we will reuse many times going forward.  The dot product is generally written as</p>
+<div class="math notranslate nohighlight">
+\[a^{T} b\]</div>
+<p>when you write <code class="docutils literal notranslate"><span class="pre">np.dot</span></code> the NumPy package will sometimes assume that you mean to do this such as in the case of the above example.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]))</span>
+<span class="go">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="go">array([[50]])</span>
+</pre></div>
+</div>
+<p>The dot product is an essential building block of <strong>matrix
+multiplication</strong>. The table below shows that when we multiply two
+matrices. The result is a table of dot products for pairs of vectors
+making up the entries of each matrix.</p>
+<p>First think about this in terms of square matrices and see if you can identify the pattern.</p>
+<p>Perform matrix multiplication on a square matrix.  This is how it works—code the pattern.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{pmatrix}
+a &amp; b \\
+c &amp; d \\
+\end{pmatrix}
+\times
+\begin{pmatrix}
+e &amp; f \\
+g &amp; h \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+ae+bg &amp; af+bh \\
+ce+dg &amp; cf+dh \\
+\end{pmatrix}\end{split}\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once you see what is happening this figure can help you understand how the pattern generalizes to different shape matrices.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/matrix-multiplication.png"><img alt="galvanize-logo" src="_images/matrix-multiplication.png" style="width: 156.0px; height: 156.0px;" /></a>
+</div>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_multiplication">https://en.wikipedia.org/wiki/Matrix_multiplication</a></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>There is a pattern to figure out the size of the resulting matrix.</p>
+<p>result = Num Rows in 1st matrix <span class="math notranslate nohighlight">\(\times\)</span> Num Columns in 2nd Matrix</p>
+</div>
+<div class="admonition-questions admonition">
+<p class="admonition-title">Questions</p>
+<ol class="arabic">
+<li><p>Given the following code write the multiplication out on paper <strong>and</strong> run it Python to check your math</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>If we multiply a <span class="math notranslate nohighlight">\(2 \times 3\)</span> matrix with a <span class="math notranslate nohighlight">\(3 \times 1\)</span> matrix, the product matrix is <span class="math notranslate nohighlight">\(2 \times 1\)</span>.</p>
+<p>Write an example of this on paper with simple numbers to see if you can understand why.</p>
+</li>
+</ol>
+</div>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=KDHuWxy53uM">Khan academy video on dot products</a></p>
+<div class="section" id="special-addition-and-multiplication-operators">
+<h3>Special addition and multiplication operators<a class="headerlink" href="#special-addition-and-multiplication-operators" title="Permalink to this headline">¶</a></h3>
+<p>Like in regular Python there is a special operator.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 5.,  5.],</span>
+<span class="go">       [ 5.,  5.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">*=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 25.,  25.],</span>
+<span class="go">       [ 25.,  25.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">+</span> <span class="n">a</span>
+<span class="go">array([[ 50.,  50.],</span>
+<span class="go">       [ 50.,  50.]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sorting-arrays">
+<h3>Sorting arrays<a class="headerlink" href="#sorting-arrays" title="Permalink to this headline">¶</a></h3>
+<p>NumPy has <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.random.html">a useful submodule to create random numbers</a></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([0, 1, 5, 6, 7])</span>
+</pre></div>
+</div>
+<p>We can also reshuffle the array</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span>
+<span class="go">array([1, 0, 6, 5, 7])</span>
+</pre></div>
+</div>
+<p>But sometimes we do not want to change our matrix, but knowing the sorted indices may be useful and here <code class="docutils literal notranslate"><span class="pre">argsort</span></code> can be very useful.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sorted_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sorted_inds</span>
+<span class="go">array([1, 0, 3, 2, 4])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="n">sorted_inds</span><span class="p">]</span>
+<span class="go">array([0, 1, 5, 6, 7])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="common-math-functions">
+<h3>Common math functions<a class="headerlink" href="#common-math-functions" title="Permalink to this headline">¶</a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="go">array([ 3.14159265,  4.44288294,  5.44139809,  6.28318531])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span><span class="o">**</span><span class="mi">4</span>
+<span class="go">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="go">4</span>
+</pre></div>
+</div>
+<p>There are <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.math.html">so many mathematical functions available to you in NumPy</a></p>
+</div>
+<div class="section" id="basic-operations-exercise">
+<h3>Basic operations exercise<a class="headerlink" href="#basic-operations-exercise" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">Exercise</p>
+<p>In the following table we have expression values for 5 genes at 4 time points.
+These are completely made up data.  Although, some of the questions can be
+easily answered by looking at the data, microarray data generally come in much
+larger tables and if you can figure it out here the same code will work for an
+entire gene chip.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene name</p></th>
+<th class="head"><p>4h</p></th>
+<th class="head"><p>12h</p></th>
+<th class="head"><p>24h</p></th>
+<th class="head"><p>48h</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A2M</p></td>
+<td><p>0.12</p></td>
+<td><p>0.08</p></td>
+<td><p>0.06</p></td>
+<td><p>0.02</p></td>
+</tr>
+<tr class="row-odd"><td><p>FOS</p></td>
+<td><p>0.01</p></td>
+<td><p>0.07</p></td>
+<td><p>0.11</p></td>
+<td><p>0.09</p></td>
+</tr>
+<tr class="row-even"><td><p>BRCA2</p></td>
+<td><p>0.03</p></td>
+<td><p>0.04</p></td>
+<td><p>0.04</p></td>
+<td><p>0.02</p></td>
+</tr>
+<tr class="row-odd"><td><p>CPOX</p></td>
+<td><p>0.05</p></td>
+<td><p>0.09</p></td>
+<td><p>0.11</p></td>
+<td><p>0.14</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Create a single array for the data (4x4)</p></li>
+<li><p>Find the mean expression value <em>per gene</em></p></li>
+<li><p>Find the mean expression value <em>per time point</em></p></li>
+</ol>
+<p><strong>Extra Credit</strong></p>
+<ol class="arabic simple" start="4">
+<li><p>Which gene has the maximum mean expression value?</p></li>
+<li><p>Sort the gene names by the max expression value</p></li>
+</ol>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">geneList</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;A2M&quot;</span><span class="p">,</span> <span class="s2">&quot;FOS&quot;</span><span class="p">,</span> <span class="s2">&quot;BRCA2&quot;</span><span class="p">,</span><span class="s2">&quot;CPOX&quot;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values0</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.12</span><span class="p">,</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.06</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values1</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.07</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.09</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values2</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.03</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.04</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values3</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.14</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="matrix-properties.html" class="btn btn-neutral float-right" title="Properties of Matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro-math.html" class="btn btn-neutral float-left" title="Thinking in terms of vectors and matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

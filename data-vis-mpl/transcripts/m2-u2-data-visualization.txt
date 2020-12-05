@@ -1,0 +1,20 @@
+Data visualization is one the most creative outlets that data scientists have.  At the end of the day the results of a model, or the results of EDA, are visualizations surrounded by text to provide context.  The combination of well-constructed visualizations with annotating text is an incredibly powerful tool to communicate insight.  
+
+Data visualization is arguably the most important tool for communicating your results to others, especially business stakeholders.  Most importantly, there are three important points to communicate to your stakeholders: 
+
+1) what you have done
+2) what you are doing, and
+3) what you plan to do. 
+
+For all of this communication, visualization is the greatest enabler.
+
+Data visualization includes tools like tabular summaries and data plotting.  In this unit we will discuss descriptive tabular tools such as aggregate groupbys, but the principal focus will be plotting.  
+
+At this point, it is important to note the difference between dashboards and plots.  The first passes through the AI workflow should have simple plots that are portable, quick to produce and quick to modify.  Dashboards require modest to significant time to create, and they are important for communicating with stakeholders over longer periods of time. We will discuss the use of dashboards through the lens of the IBM Watson Studio analytics dashboard. However,  before you start creating dashboards, you should begin by creating simple plots. Recall the guiding phrase, "make it work, then make it better".
+
+The most widely used visualization tool in data science today is the library matplotlib and this is likely due to it being open-source, flexible and easy to use for simple plots.  There are numerous other tools, such as ggplot2 for R. 
+
+If you are a practicing data scientist then chances are that you use these technologies to carry out EDA already.  A major goal of this unit is to ensure that you use open source tools according to best practices to help ensure effective communication.  For example, Jupyter notebooks are portable and can be converted into pdf, html or integrated directly into the IBM Watson Studio environment.  One of the most important best practices is to keep your code base separate from your visualization notebook.  Notebooks are a powerful tool at your disposal for visualization, but they are not an ideal place to store significant amounts of code.
+The majority of code, even in the case of visualization should exist as separate files because Jupyter notebooks do not lend themselves naturally to version control.  
+
+Ensuring a collaborative environment is the goal of many of these best practices. IBM Watson Studio projects are designed from the ground up to support collaborative work.  Modern data science is collaborative by nature and version control systems powered by software like Git, Mercurial and subversion are the backbone of effective team work.

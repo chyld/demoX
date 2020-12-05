@@ -1,0 +1,22 @@
+Welcome to the second module.  The topic is exploratory data analysis or more commonly referred to as EDA.  The mathematician John Tukey, who invented the Fast Fourier Transform and the box plot, among other things, is often credited with formalizing the process of EDA in the early 1960s.
+
+At the time he made the important distinction between `exploratory data analysis` and `confirmatory data analysis` and it was his belief that statisticians placed too much emphasis on the latter.  Have times really changed?  After all the process of developing, tuning and deploying models is more enjoyable today than it ever has been.  Can we honestly say the same thing for the exploratory part of the process?  Maybe.
+
+That being said, the goal of this module is to emphasize the importance of dedicating time to EDA.  The tools and techniques available today have come a long way since the days of Tukey and it is our intent that you complete this unit with a fresh take on what is possible when it comes to EDA.
+
+The goals of this part of the AI workflow vary with the available data and business opportunity, but in general they are as follows.
+
+You will leverage visualization tools, summary tables and hypothesis testing to:
+
+1. provide summary level insight into a data set
+2. uncover underlying patterns and structure in the data
+3. identify outliers, missing data, class balance and other data related issues
+4. relate the available data to the business opportunity
+
+Let's use a movie example to help explain  why this part of the process is so important.
+
+Imagine you are part of a group of friends who decide to go to a movie with an unfamiliar title. This decision will likely lead the friends to ask a lot of questions.  To get some answers they might learn about the cast, the crew, the reviews.  It turns out website rotten tomatoes has already done much of this EDA for you.  It provides summary statistics, production shots and a link to the trailer.  It goes without saying that these visuals will factor heavily into how you perceive the yet unseen film.
+
+The movie analogy has similarities to the AI workflow.  Before committing to a modeling procedure (in this case the movie), which is generally time-consuming you will explore some of the evidence that is available to support such a decision.  Some models can be created and deployed in less than an hour, but others can consume days, weeks or possibly more of your time.  If the next movie you wanted to go see was the first in a lengthy trilogy you might invest even more time exploring.
+
+The time spent on a project is a part of the investment a company makes to pursue a business opportunity.  EDA serves to maximize the efficiency of your overall time spent on a project.  We will use IBM Watson studio and other state-of-the art tools to formalize the investigation of business opportunities.  At the end of this stage it will be time to communicate your findings to business stakeholders.  Communicating your findings is a step that is just as important as the EDA itself.

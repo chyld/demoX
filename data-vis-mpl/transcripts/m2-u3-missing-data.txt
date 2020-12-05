@@ -1,0 +1,31 @@
+Exploratory data analysis is mostly about gaining insight through visualization and hypothesis testing.  Recall that the data ingestion process is useful for holding the data to a minimum standard with respect to quality assurance.  This unit deals with the imputation of missing values and it is where EDA and data ingestion meet.  The handling of missing data could exists as part of the data ingestion process, but it is not often clear which strategy is the best until we can make comparisons with respect model performance.  One missing value strategy may be better for some models, but for others another strategy may show better predictive performance.
+
+...
+
+Missing data is a common problem in most real-world scientific datasets.  While the best way for dealing with missing data will always be preventing the occurrence in the first place the problem will still remain.  Sometimes data is collected from sensors that fail to record or data collection is distributed across individuals and the merged data does not harmonize well. There are a variety of ways for dealing with missing data, from more simplistic to very sophisticated, but a standard metric by which we measure utility will still be model performance.
+
+...
+
+One strategy for accounting for missing values is to simply ignore them---this is generally not a great idea because you have little insight into how the missing data influenced the results.  One of the most common strategies is called complete case analysis.  Here you only consider data without missing values by performing a row-wise deletion.
+
+...
+
+Complete case analysis can lead to undesirable results, but the degree to which it does depends on category of missingness.  The category of missingness can have important implications for statistical bias and power.  Recall that statistical power is the probability that a test rejects the null hypothesis when the specific alternative hypothesis is true.  In the context of machine learning statistical bias are the systematic differences observed between the expected prediction and the actual.  Bias occurs because the underlying signal in the data cannot be properly learned due to issues with data.  Both statistical bias and power contribute to the ability of a model to properly detect signal, when a detectable signal is present.  The three categories of missingness are:
+
+...
+
+- Missing completely at random or MCAR:  When data are MCAR, missing cases are, on average, identical to non-missing cases, with respect the feature matrix.  Complete case analysis will reduce the power of the analysis, but will not affect bias.
+
+- The next type is Missing At Random or MAR: When data are MAR the missing data often have some dependence on on measured values, and models can be used to help impute what the likely data would be.  For example, in an MLB survey, there may be a gender bias when it comes to completing all of the questions.
+
+- The last category is  Missing not at random or MNAR:  In this case the missing data depend on unmeasured or unknown variables. There is no information available to account for the missingness.
+
+...
+
+The best case scenario is that the data are MCAR.  It should be noted that imputing values under the other two types of missingness can result in an increase in bias.  This is a reminder of why it is so important to have train/test splits.  Two of the more sophisticated strategies are Bayesian imputation and multiple imputation.
+
+...
+
+In statistics the process of replacing missing data with substituted values is known as imputation.  It is a common practice to perform multiple imputations.  This implies that there are some number of separate imputations for a single feature matrix.  For each imputation the feature matrix is put through the machine learning pipeline with a train-test split allowing the data scientist to better understanding the affect that imputation has on the model performance.
+
+In this unit we will illustrate multiple imputation to account for missing data in a simple analysis. In the case study that follows this unit we will also exemplify the iterative process for deciding which strategy is best.

@@ -1,0 +1,340 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; RAPIDS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting-started.html" />
+    <link rel="prev" title="RAPIDS" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RAPIDS</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-resources">Useful Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">cuDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">cuML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The company <a class="reference external" href="https://www.nvidia.com/en-us/">NVIDIA®</a>. has been working hard
+<a class="reference external" href="https://developer.nvidia.com/machine-learning">to accelerate machine learning and analytics</a> by leveraging GPUs.  It
+is no secret that NVIDIA exists to sell
+<a class="reference external" href="https://en.wikipedia.org/wiki/Graphics_processing_unit">Graphics processing units</a> (GPUs) and the company has for
+sometime now been an important contributor to both <a class="reference external" href="https://developer.nvidia.com/open-source">open-source projects</a> and
+to <a class="reference external" href="https://developer.nvidia.com/hpc">scientific computing in general</a>.  One interesting example of how NVIDIA has
+contributed to scientific technology and tooling while simultaneously promoting the sale of GPUs is in their initiatives
+to help <a class="reference external" href="https://blogs.nvidia.com/blog/2020/06/22/fighting-covid-19-scientific-computing/">advance the state of  COVID-19 research</a>.</p>
+<p>RAPIDS and the rest of the developer tools that have been created to help data professionals were born out of this same
+mindset and the result is a powerful ecosystem that is well-integrated with the
+<a class="reference external" href="https://stackoverflow.com/questions/18168400/the-pydata-ecosystem/20822664">PyData ecosystem</a>.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 24%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit</p></th>
+<th class="head"><p>Main Topics</p></th>
+<th class="head"><p>Learning Objectives</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Getting Started</p></td>
+<td><p>Describe the main components of the RAPIDS ecosystem and install a working environment</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Analytics</p></td>
+<td><p>Describe the use cases of and apply cuDF</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Machine Learning</p></td>
+<td><p>Describe the use cases of and apply cuML and cuSKL</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>end-to-end example</p></td>
+<td><p>Implement and end-to-end data science pipeline using RAPIDS</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/nvidia-logo.png"><img alt="galvanize-logo" src="_images/nvidia-logo.png" style="width: 157.2px; height: 115.8px;" /></a>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>NVIDIA created RAPIDS in a way that makes use of CUDA primitives for low-level compute optimization.  The developers at
+NVIDIA and other contributors have abstracted away most of the implementation details and the result is a number of
+interfaces that are both intuitive and aligned with the norms of the Python data science ecosystem.</p>
+</div>
+<div class="section" id="useful-resources">
+<h2>Useful Resources<a class="headerlink" href="#useful-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://medium.com/rapids-ai">Medium blog for RAPIDS</a></p></li>
+<li><p><a class="reference external" href="https://news.developer.nvidia.com/?search_theme_form=rapids&amp;s=rapids">NVIDIA developer news for RAPIDS</a></p></li>
+<li><p><a class="reference external" href="https://developer.nvidia.com/blog/?search_theme_form=rapids">NVIDIA developer blogs</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2002.04803.pdf">RAPIDS manuscript on arxiv</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting-started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="RAPIDS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #000099;
+      max-width: none;
+  }
+  </style>
+
+
+</body>
+</html>

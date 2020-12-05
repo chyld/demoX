@@ -1,0 +1,555 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sparse Matrices &mdash; High-Performance Computing</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Subprocessing" href="subprocessing.html" />
+    <link rel="prev" title="Multiprocessing" href="multiprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #000099" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> High-Performance Computing
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">HPC</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming.html">Parallel Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sparse Matrices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-staging">Data staging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-convenience-of-sparse-matrices">The convenience of sparse matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-sparse-matrices">Working with sparse matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-and-writing-sparse-matrices">Reading and writing sparse matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sparse-matrices-in-pandas">Sparse matrices in Pandas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-resources">Additional resources:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subprocessing.html">Subprocessing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">APPENDICES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cython.html">Cython</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">High-Performance Computing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Sparse Matrices</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/sparse-matrices.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="sparse-matrices">
+<h1>Sparse Matrices<a class="headerlink" href="#sparse-matrices" title="Permalink to this headline">¶</a></h1>
+<p>Once you have finished with the <strong>sparse matrices</strong> unit we expect that you will be able to:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 24%" />
+<col style="width: 72%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Sparse Matrices</p></td>
+<td><p>Explain when to use sparse matrices during the machine learning model development process</p></td>
+</tr>
+</tbody>
+</table>
+<p>Sometimes the optimization of our code has less to do with the algorithm or model and more to do with optimizing how
+the data is stored and fetched.  There are many applications in which we deal with matrices that are nearly all zeros.</p>
+<p>Deploying your AI application is only one portion of the solution.  Another significant portion is the ability
+to ingest new data and ensure that models have the ability to predict and refresh themselves with new data.
+​
+The full analysis pipeline should not be finalized during the initial stages of development of the machine learning
+model it feeds.  Finalizing the process of data ingestion <em>before</em> models have been run and your hypotheses about the
+business use case have been tested often leads to an ineffective use of time. Early experiments almost always fail and
+you should be careful about investing large amounts of time in building proper data ingestion pipeline until there is
+enough accumulated evidence that a deployed model will help the business.</p>
+<div class="section" id="data-staging">
+<h2>Data staging<a class="headerlink" href="#data-staging" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Data scientists will often use sparse matrices during the development and testing of a machine learning model</p></li>
+<li><p>Python libraries available in SciPy package to work with sparse matrices.</p></li>
+</ul>
+<p>Instead of building a complete data ingestion pipeline, data scientists will often use sparse matrices during the
+development and testing of a machine learning model. Sparse matrices are used to represent complex sets of data
+(e.g., word counts) in a way that reduces the use of computer memory and processing time.</p>
+<p>The code block below imports this library as well as NumPy for calculations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">sparse</span>
+</pre></div>
+</div>
+<p>Sparse matrices offer a middle-ground between:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A comprehensive data warehouse solution with extensive test coverage</p></li>
+<li><p>A directory of text files and database dumps</p></li>
+</ul>
+</div></blockquote>
+<p>Sparse matrices offer a middle-ground between a comprehensive data warehouse solution with extensive test coverage and
+a directory of text files and database dumps. Sparse matrices do not work for all data types, but in situations where
+they are an appropriate technology you can leverage them even under load in production.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the number of zero-valued elements divided by the size of the matrix is greater than 0.5 then it is considered
+<strong>sparse</strong>.</p>
+</div>
+<p>A sparse matrix is one in which most of the values are zero. If the number of zero-valued elements divided by the size
+of the matrix is greater than 0.5 then it is considered sparse.  The following code will generate an array of 100,000
+random integers between 0 and 2, reshape that array into a 100x1000 matrix, and then compute the sparsity.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">100000</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">sparsity</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">A</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sparsity</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="section" id="the-convenience-of-sparse-matrices">
+<h3>The convenience of sparse matrices<a class="headerlink" href="#the-convenience-of-sparse-matrices" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Very large non-sparse matrices require significant amounts of memory.</p></li>
+<li><p>Sparse matrices allow you to manage large amounts of data in a memory-efficient and time-efficient manner.</p></li>
+</ul>
+</div></blockquote>
+<p>Very large matrices require significant amounts of memory. For example, If we make a matrix of counts for a document or
+a book where the features are all known English words, the chances are high that your personal machine does not have
+enough memory to represent it as a dense matrix. Sparse matrices have the additional advantage of getting around
+time-complexity issues that arise with operations on large dense matrices.</p>
+<p>The following code will create a 10x100 array of random numbers drawn from a Poisson distribution, cast that
+matrix into a sparse matrix in coordinate format, and then return it to a dense matrix.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">todense</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">),</span><span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+      <span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">B</span><span class="p">),</span><span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+      <span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="nb">type</span><span class="p">(</span><span class="n">C</span><span class="p">),</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A &lt;class &#39;numpy.ndarray&#39;&gt; (10, 100)
+B &lt;class &#39;scipy.sparse.coo.coo_matrix&#39;&gt; (10, 100)
+C &lt;class &#39;numpy.matrix&#39;&gt; (10, 100)
+</pre></div>
+</div>
+</div>
+<div class="section" id="working-with-sparse-matrices">
+<h3>Working with sparse matrices<a class="headerlink" href="#working-with-sparse-matrices" title="Permalink to this headline">¶</a></h3>
+<p>When there are repeated entries in the rows or cols, we can remove the redundancy by indicating the location of the
+first occurrence of a value and its increment instead of the full coordinates.</p>
+<dl class="simple">
+<dt>csc_matrix</dt><dd><p>When the repeats occur in columns we use a CSC, or
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csc_matrix.html#scipy.sparse.csc_matrix/">compressed sparse column</a> format.</p>
+</dd>
+<dt>csr_matrix</dt><dd><p>When the repeats occur in rows we use a CSR, or
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.csr_matrix.html#scipy.sparse.csr_matrix/">compressed sparse row</a> format.</p>
+</dd>
+<dt>coo_matrix</dt><dd><p>A sparse matrix in <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.coo_matrix.html#scipy.sparse.coo_matrix/">coordinate</a> format.</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csc_matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Because the coordinate format is easier to create, it is common to create it first then cast to another more
+efficient format. Let us first show how to create a matrix from coordinates</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">coo_matrix</span><span class="p">((</span><span class="n">vals</span><span class="p">,</span> <span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Then to cast it to a CSR matrix:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">tocsr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(0, 1)      1
+(1, 0)      2
+(2, 4)      1
+(8, 8)      4
+</pre></div>
+</div>
+<p>Because this introduction to sparse matrices is applied to data ingestion you would need to be able to:</p>
+<ul class="simple">
+<li><p>concatenate matrices (e.g., add a new user to a recommender matrix)</p></li>
+<li><p>read and write the matrices to and from disk</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## concatenate example</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">todense</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="p">[[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">4</span><span class="p">]</span>
+ <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-and-writing-sparse-matrices">
+<h3>Reading and writing sparse matrices<a class="headerlink" href="#reading-and-writing-sparse-matrices" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## read and write</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sparse_matrix.npz&quot;</span>
+<span class="n">sparse</span><span class="o">.</span><span class="n">save_npz</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">D</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">sparse</span><span class="o">.</span><span class="n">load_npz</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see the syntax is very similar to NumPy.</p>
+</div>
+<div class="section" id="sparse-matrices-in-pandas">
+<h3>Sparse matrices in Pandas<a class="headerlink" href="#sparse-matrices-in-pandas" title="Permalink to this headline">¶</a></h3>
+<p>Pandas supports Sparse data structures to efficiently store sparse data, and these functions are interoperable with scipy sparse.</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.arrays.SparseArray.html#pandas.arrays.SparseArray">arrays.SparseArray</a></dt><dd><p><strong>ExtensionArray</strong> for storing an array of sparse values. It is a 1-dimensional ndarray-like object storing only values distinct from the <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">]:</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">14</span><span class="p">]:</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">15</span><span class="p">]:</span> <span class="n">arr</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="n">sparr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">17</span><span class="p">]:</span> <span class="n">sparr</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">17</span><span class="p">]:</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">1.9556635297215477</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.6588664275960427</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="mf">1.1589328886422277</span><span class="p">,</span> <span class="mf">0.14529711373305043</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="mf">0.6060271905134522</span><span class="p">,</span> <span class="mf">1.3342113401317768</span><span class="p">]</span>
+<span class="n">Fill</span><span class="p">:</span> <span class="n">nan</span>
+<span class="n">IntIndex</span>
+<span class="n">Indices</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A sparse array can be converted to a regular (dense) ndarray with <code class="docutils literal notranslate"><span class="pre">numpy.asarray()</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">18</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sparr</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">18</span><span class="p">]:</span>
+<span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.9557</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.6589</span><span class="p">,</span>     <span class="n">nan</span><span class="p">,</span>     <span class="n">nan</span><span class="p">,</span>     <span class="n">nan</span><span class="p">,</span>  <span class="mf">1.1589</span><span class="p">,</span>  <span class="mf">0.1453</span><span class="p">,</span>
+        <span class="n">nan</span><span class="p">,</span>  <span class="mf">0.606</span> <span class="p">,</span>  <span class="mf">1.3342</span><span class="p">])</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.SparseDtype.html#pandas.SparseDtype">SparseArray.dtype</a></dt><dd><p>property stores <strong>dtype</strong> of the non-sparse values and the <strong>scalar fill value</strong></p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">sparr</span><span class="o">.</span><span class="n">dtype</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">19</span><span class="p">]:</span> <span class="n">Sparse</span><span class="p">[</span><span class="n">float64</span><span class="p">,</span> <span class="n">nan</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The default fill value for a given NumPy dtype is the “missing” value for that dtype, though it may be overridden.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">pd</span><span class="o">.</span><span class="n">SparseDtype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s1">&#39;datetime64[ns]&#39;</span><span class="p">),</span>
+<span class="o">....</span><span class="p">:</span>                <span class="n">fill_value</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2017-01-01&#39;</span><span class="p">))</span>
+<span class="o">....</span><span class="p">:</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">21</span><span class="p">]:</span> <span class="n">Sparse</span><span class="p">[</span><span class="n">datetime64</span><span class="p">[</span><span class="n">ns</span><span class="p">],</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">01</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The string alias <code class="docutils literal notranslate"><span class="pre">'Sparse[dtype]'</span></code> may be used to specify a sparse dtype in many places</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">22</span><span class="p">]:</span> <span class="n">pd</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;Sparse[int]&#39;</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">22</span><span class="p">]:</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">Fill</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">IntIndex</span>
+<span class="n">Indices</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/frame.html#api-frame-sparse">.sparse accessor</a></dt><dd><p>Pandas provides a <code class="docutils literal notranslate"><span class="pre">.sparse</span></code> accessor, similar to <code class="docutils literal notranslate"><span class="pre">.str</span></code> for string data, <code class="docutils literal notranslate"><span class="pre">.cat</span></code> for categorical data, and <code class="docutils literal notranslate"><span class="pre">.dt</span></code> for datetime-like data. This namespace provides attributes and methods that are specific to sparse data.</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">23</span><span class="p">]:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Sparse[int]&quot;</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="n">s</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">density</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">24</span><span class="p">]:</span> <span class="mf">0.5</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="n">s</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">fill_value</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>This accessor is available only on data with SparseDtype, and on the <strong>Series</strong> or <strong>DataFrame</strong> class itself for creating a Series with sparse data from a scipy COO matrix with.</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/ufuncs.html">Numpy ufuncs</a></dt><dd><p>Sparse calculations let you apply NumPy ufuncs to <code class="docutils literal notranslate"><span class="pre">SparseArray</span></code> and get a <code class="docutils literal notranslate"><span class="pre">SparseArray</span></code> as a result.</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">26</span><span class="p">]:</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">27</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">27</span><span class="p">]:</span>
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="n">nan</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">nan</span><span class="p">]</span>
+<span class="n">Fill</span><span class="p">:</span> <span class="n">nan</span>
+<span class="n">IntIndex</span>
+<span class="n">Indices</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>ufunc</cite> is also applied to <code class="docutils literal notranslate"><span class="pre">fill_value</span></code>. This is needed to get the correct dense result.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">28</span><span class="p">]:</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">arrays</span><span class="o">.</span><span class="n">SparseArray</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">fill_value</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">29</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">29</span><span class="p">]:</span>
+<span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Fill</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">IntIndex</span>
+<span class="n">Indices</span><span class="p">:</span> <span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">)</span>
+
+<span class="n">In</span> <span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">to_dense</span><span class="p">()</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">30</span><span class="p">]:</span> <span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h3>Additional resources:<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/sparse.html">SciPy docs for Sparse Matrices</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/sparse.html">Pandas docs for Sparse Matrices</a></p></li>
+</ul>
+<div class="admonition-assignment admonition">
+<p class="admonition-title">Assignment</p>
+<ul class="simple">
+<li><p>download: <a class="reference external" href="exercises/assignment-1.md">Assignment 1</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="subprocessing.html" class="btn btn-neutral float-right" title="Subprocessing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="multiprocessing.html" class="btn btn-neutral float-left" title="Multiprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

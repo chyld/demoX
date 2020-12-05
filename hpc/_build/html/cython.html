@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Cython &mdash; High-Performance Computing</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Subprocessing" href="subprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #000099" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> High-Performance Computing
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">HPC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming.html">Parallel Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiprocessing.html">Multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sparse-matrices.html">Sparse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocessing.html">Subprocessing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">APPENDICES</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Cython</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#c-code-with-python">C code with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cython-wrapping-c-code-with-python">Cython - wrapping C code with Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-pyx-file">The pyx file</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-it">Build it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-great-circle-problem">The Great circle problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#great-circle-setup-py">Great circle setup.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-it">Run it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#more-information">More information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">High-Performance Computing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Cython</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cython.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="cython">
+<h1>Cython<a class="headerlink" href="#cython" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="c-code-with-python">
+<h2>C code with Python<a class="headerlink" href="#c-code-with-python" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have some c code that you would like to wrap to access the API in python.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">double</span> <span class="nf">c_fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">double</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>Your options for running this c code in python:</dt><dd><ol class="arabic simple">
+<li><p>Use <a class="reference external" href="https://gcc-python-plugin.readthedocs.io/en/latest/">gcc</a> to compile and <a class="reference external" href="https://docs.python.org/3/library/ctypes.html">ctypes</a> for c-compatible datatypes.</p></li>
+<li><p>Use <a class="reference external" href="https://pypi.org/project/clang/">clang</a> and <a class="reference external" href="https://pypi.org/project/bitey/">bitey</a>.</p></li>
+<li><p>Use <a class="reference external" href="https://cython.org/">Cython</a> to compile your python into C code and wrap for access.</p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="cython-wrapping-c-code-with-python">
+<h2>Cython - wrapping C code with Python<a class="headerlink" href="#cython-wrapping-c-code-with-python" title="Permalink to this headline">¶</a></h2>
+<p>For speed purposes this is amazing.</p>
+<p>Here is the <cite>hello world</cite> example.  First we need a <cite>setup.py</cite> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+<span class="kn">from</span> <span class="nn">Cython.Distutils</span> <span class="kn">import</span> <span class="n">build_ext</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">cmdclass</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">},</span>
+    <span class="n">ext_modules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Extension</span><span class="p">(</span><span class="s2">&quot;helloworld&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;helloworld.pyx&quot;</span><span class="p">])]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-pyx-file">
+<h2>The pyx file<a class="headerlink" href="#the-pyx-file" title="Permalink to this headline">¶</a></h2>
+<p>And another file <cite>helloworld.pyx</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;helloworld&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A .pyx file is compiled by Cython to a .c file</p>
+<div class="section" id="build-it">
+<h3>Build it<a class="headerlink" href="#build-it" title="Permalink to this headline">¶</a></h3>
+<p>We build the file to produce <cite>helloworld.so</cite> in unix or <cite>helloworld.dll</cite> in Windows.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python setup.py build_ext --inplace
+</pre></div>
+</div>
+<p>Then we may import the code directly into python</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">helloworld</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-great-circle-problem">
+<h3>The Great circle problem<a class="headerlink" href="#the-great-circle-problem" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">import</span> <span class="n">math</span>
+
+<span class="n">def</span> <span class="n">great_circle</span><span class="p">(</span><span class="kt">float</span> <span class="n">lon1</span><span class="p">,</span><span class="kt">float</span> <span class="n">lat1</span><span class="p">,</span><span class="kt">float</span> <span class="n">lon2</span><span class="p">,</span><span class="kt">float</span> <span class="n">lat2</span><span class="p">)</span><span class="o">:</span>
+    <span class="n">cdef</span> <span class="kt">float</span> <span class="n">radius</span> <span class="o">=</span> <span class="mf">3956.0</span> 
+    <span class="n">cdef</span> <span class="kt">float</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265</span>
+    <span class="n">cdef</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+    <span class="n">cdef</span> <span class="kt">float</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">c</span>
+
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">90.0</span><span class="o">-</span><span class="n">lat1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mf">90.0</span><span class="o">-</span><span class="n">lat2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="p">(</span><span class="n">lon2</span><span class="o">-</span><span class="n">lon1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="n">acos</span><span class="p">((</span><span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">radius</span><span class="o">*</span><span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="great-circle-setup-py">
+<h3>Great circle setup.py<a class="headerlink" href="#great-circle-setup-py" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">from</span> <span class="nn">distutils.extension</span> <span class="kn">import</span> <span class="n">Extension</span>
+<span class="kn">from</span> <span class="nn">Cython.Distutils</span> <span class="kn">import</span> <span class="n">build_ext</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">cmdclass</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;build_ext&#39;</span><span class="p">:</span> <span class="n">build_ext</span><span class="p">},</span>
+    <span class="n">ext_modules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Extension</span><span class="p">(</span><span class="s2">&quot;greatcircle&quot;</span><span class="p">,[</span><span class="s2">&quot;CythonGreatCircle.pyx&quot;</span><span class="p">])]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-it">
+<h3>Run it<a class="headerlink" href="#run-it" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>~$ python setup_gc.py build_ext --inplace
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">greatcircle</span> <span class="kn">import</span> <span class="n">great_circle</span>
+<span class="n">lon1</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat2</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">32</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">1e06</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">4</span><span class="p">),)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">mat</span> <span class="o">+</span> <span class="p">[</span><span class="n">lon1</span><span class="p">,</span><span class="n">lat1</span><span class="p">,</span><span class="n">lon2</span><span class="p">,</span><span class="n">lat2</span><span class="p">]</span>
+
+<span class="n">timeStart</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">great_circle</span><span class="p">(</span><span class="o">*</span><span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">,:])</span>
+<span class="nb">print</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%H:%M:%S&#39;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">gmtime</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">timeStart</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-information">
+<h3>More information<a class="headerlink" href="#more-information" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.perrygeo.com/a-quick-cython-introduction.html">A blog I borrowed some code from</a></p></li>
+<li><p><a class="reference external" href="https://cython.readthedocs.io/en/latest/src/userguide/">Cython documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3.8/extending/extending.html">Extending Python with C or C++</a></p></li>
+<li><p><a class="reference external" href="http://cran.r-project.org/doc/manuals/R-exts.html">Writing R extensions</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="subprocessing.html" class="btn btn-neutral float-left" title="Subprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

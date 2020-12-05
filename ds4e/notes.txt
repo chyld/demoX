@@ -1,0 +1,6 @@
+If you try to apply deep-learning or machine learning to every aspect of AI then you will end up wasting a significant amount of time.  At least with today's technology there is no one approach that works for all applications. 
+
+
+Luis also makes a point that many people mistakenly confuse automation and AI. Automation is using a computer to carry out specific tasks
+
+^^is it is not the creation of intelligence.

@@ -1,0 +1,12 @@
+numpy
+pandas
+sklearn
+sphinx
+sphinxcontrib-bibtex
+sphinx-rtd-theme
+nbsphinx
+pytz
+sphinxcontrib-fancybox
+RISE
+matplotlib
+

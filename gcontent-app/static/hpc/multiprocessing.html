@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multiprocessing &mdash; High-Performance Computing</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sparse Matrices" href="sparse-matrices.html" />
+    <link rel="prev" title="Parallel Programming" href="parallel-programming.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #000099" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> High-Performance Computing
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">HPC</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel-programming.html">Parallel Programming</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Multiprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-python">In Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-run-code-in-parallel">Why run code in parallel?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#when-to-go-parallel">When to go parallel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-the-futures-object-with-multiprocessing">Using the futures object with multiprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#threading">Threading</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#threading-for-subprocessing">Threading for subprocessing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sparse-matrices.html">Sparse Matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subprocessing.html">Subprocessing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">APPENDICES</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cython.html">Cython</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">High-Performance Computing</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Multiprocessing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/multiprocessing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="multiprocessing">
+<h1>Multiprocessing<a class="headerlink" href="#multiprocessing" title="Permalink to this headline">¶</a></h1>
+<p>Once you have finished with the <strong>multiprocessing</strong> unit we expect that you will be able to:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 28%" />
+<col style="width: 67%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Multiprocessing</p></td>
+<td><p>Use the multiprocessing module parallelize operations in python</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="in-python">
+<h2>In Python<a class="headerlink" href="#in-python" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="n">total_cores</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;total cores: &#39;</span><span class="p">,</span> <span class="n">total_cores</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>total cores: 8
+</pre></div>
+</div>
+<div class="section" id="why-run-code-in-parallel">
+<h3>Why run code in parallel?<a class="headerlink" href="#why-run-code-in-parallel" title="Permalink to this headline">¶</a></h3>
+<p>There are numerous reasons to run your code in parallel</p>
+<blockquote>
+<div><ul>
+<li><p>Modern computers have multiple cores and <a class="reference external" href="https://en.wikipedia.org/wiki/Hyper-threading">hyperthreading</a></p></li>
+<li><p>Graphics processing units (GPUs) have driven many of the recent advancements in data science</p></li>
+<li><p>Many of the newest <em>i7</em> processors have 8 cores</p></li>
+<li><p>The is a lot of <strong>potential</strong> but the overhead can be demanding for some problems</p></li>
+<li><p>When we call a python script e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python run.py
+</pre></div>
+</div>
+<p>only a single core is dedicated to this process by default.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Parallel_computing">Parallel computing</a> can help us make better use of the
+available hardware.</p>
+</li>
+</ul>
+</div></blockquote>
+<div class="section" id="when-to-go-parallel">
+<h4>When to go parallel<a class="headerlink" href="#when-to-go-parallel" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ul class="simple">
+<li><p>Sometimes it is difficult to make code more efficient otherwise</p></li>
+<li><p>Sometimes it is <a class="reference external" href="http://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a></p></li>
+<li><p>Try to think about future development</p></li>
+<li><p>Sometimes we (think that we) only need to run the code once</p></li>
+</ul>
+</div></blockquote>
+<p>Examples of embarrassingly parallel applications:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Multiple chains of MCMC</p></li>
+<li><p>Bootstrap for confidence intervals</p></li>
+<li><p>Power calculations by simulation</p></li>
+<li><p>Permutation-resampling tests</p></li>
+<li><p>Fitting same model on multiple data sets</p></li>
+<li><p>Distance matrices</p></li>
+</ul>
+</div></blockquote>
+<p>This is a package in the standard python library. Here is the <a class="reference external" href="https://docs.python.org/3.8/library/multiprocessing.html">documentation</a>.
+For some problems it can avoid the hassle of chunking your analysis into wedges and reassembling the parts.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<span class="n">totalCores</span> <span class="o">=</span> <span class="n">cpu_count</span><span class="p">()</span>
+<span class="nb">print</span> <span class="n">totalCores</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="using-the-futures-object-with-multiprocessing">
+<h2>Using the futures object with multiprocessing<a class="headerlink" href="#using-the-futures-object-with-multiprocessing" title="Permalink to this headline">¶</a></h2>
+<p>When you have many jobs:</p>
+<p>The <cite>futures</cite> object gives fine control over the process, such as adding
+callbacks and canceling a submitted job, but is computationally
+expensive. We can use the <cite>chunksize</cite> argument to reduce this cost when
+submitting many jobs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">pool</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span><span class="p">,</span> <span class="n">ProcessPoolExecutor</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+
+<span class="k">with</span> <span class="n">ProcessPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the methods of a pool should only ever be used by the process which created it.</p>
+</div>
+<div class="section" id="threading">
+<h2>Threading<a class="headerlink" href="#threading" title="Permalink to this headline">¶</a></h2>
+<p>If you are looking for the same functionality but at a lower level see
+the <a class="reference external" href="https://docs.python.org/3.8/library/threading.html">threading module</a>.</p>
+<div class="section" id="threading-for-subprocessing">
+<h3>Threading for subprocessing<a class="headerlink" href="#threading-for-subprocessing" title="Permalink to this headline">¶</a></h3>
+<p>Here is class shell that you can use to control a subprocess with threads.  Scroll to the bottom to see how to use it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">subprocess</span><span class="o">,</span> <span class="nn">threading</span>
+
+<span class="k">def</span> <span class="nf">run_subprocess</span><span class="p">(</span><span class="n">cmd</span><span class="p">):</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span><span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">next_line</span> <span class="o">=</span> <span class="n">proc</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+            <span class="n">proc</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">next_line</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span> <span class="ow">and</span> <span class="n">proc</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">break</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">proc</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="k">break</span>
+
+<span class="k">class</span> <span class="nc">RunSubprocess</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    a generic class to control a subprocess with threads</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cmd</span><span class="p">,</span> <span class="n">mainWindow</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cmd</span> <span class="o">=</span> <span class="n">cmd</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mainWindow</span> <span class="o">=</span> <span class="n">mainWindow</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stdOut</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">stdErr</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">timeout</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">target</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cmd</span><span class="p">,</span><span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                                <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span><span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">bufsize</span><span class="o">=</span><span class="mi">4096</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">stdOut</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdErr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1">## wait a specified amount of time before terminating</span>
+        <span class="k">if</span> <span class="n">timeout</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The subprocess was auto-terminated due to timeout&#39;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">poll</span><span class="p">())</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+        
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">returncode</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">add_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">textScreen</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span>
+        
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">textScreen</span><span class="o">.</span><span class="n">showMessages</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">textScreen</span><span class="o">.</span><span class="n">toggle_message_btn</span><span class="p">()</span>
+            
+        <span class="bp">self</span><span class="o">.</span><span class="n">textScreen</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+        <span class="n">QtGui</span><span class="o">.</span><span class="n">QApplication</span><span class="o">.</span><span class="n">processEvents</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">is_alive</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    
+    <span class="n">myProcess</span> <span class="o">=</span> <span class="n">RunSubprocess</span><span class="p">(</span><span class="s2">&quot;echo &#39;Process started&#39;; sleep 2; echo &#39;Process finished&#39;&quot;</span><span class="p">)</span>
+    
+    <span class="c1">## test should pass</span>
+    <span class="n">returnCode</span> <span class="o">=</span> <span class="n">myProcess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pass return code&#39;</span><span class="p">,</span> <span class="n">returnCode</span><span class="p">)</span>
+
+    <span class="c1">## test should fail</span>
+    <span class="n">returnCode</span> <span class="o">=</span> <span class="n">myProcess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;fail return code&#39;</span><span class="p">,</span> <span class="n">returnCode</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-assignment admonition">
+<p class="admonition-title">Assignment</p>
+<p>Given what you have seen above can you use multiprocessing to speed-up the original <cite>great_circle</cite> function?</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For those of you who want to dig deeper into high performance computing, continue into the remaining sections.
+Multiprocessing is the most important section and it was the main learning objective.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sparse-matrices.html" class="btn btn-neutral float-right" title="Sparse Matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="parallel-programming.html" class="btn btn-neutral float-left" title="Parallel Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+   
+
+</body>
+</html>

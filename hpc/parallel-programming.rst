@@ -1,0 +1,127 @@
+************************
+Parallel Programming
+************************
+
+Once you have finished with the **Parallel programming** unit we expect that you will be able to:
+
++------+------------------------------+------------------------------------------------------------------------------------+
+| 1    | Parallel Programming         | Describe some algorithms and data structures that contribute to fast code.         |
++------+------------------------------+------------------------------------------------------------------------------------+
+
+
+There are many ways to speed up slow code. One of the first things that should come to mind is whether there is a more
+appropriate data structure or algorithm that can be used. The reason is that this is the only approach that makes a
+difference to the Big-O complexity, and this makes all the difference for scalability.
+
+Visit the `problem solving with algorithms and data structures
+<http://interactivepython.org/runestone/static/pythonds/index.html#>`_
+to learn more.
+
+
+A process for Parallel programming
+====================================
+
+Continued study in algorithms will teach you about these and so many more:
+
+   * Adaptive methods (e.g. adaptive quadrature, adaprive Runge-Kutta)
+   * Divide and conquer (e.g. Barnes-Hut, Fast Fourier Transform)
+   * Tabling and dynamic programming (e.g. Viterbi algorithm for Hidden Markov Models)
+   * Graphs and network algorihtms (e.g. shortest path, max flow min cut)
+   * Hashing (e.g. locality senstive hashing, Bloom filters)
+   * Probabilistic algorithms (e.g. randomized projections, Monte Carlo integration)
+
+1. Start by profiling a serial program to identify bottlenecks
+
+2. Identify opportunities for parallelism by asking the following questions:
+
+   Can tasks be performed in parallel?
+       * Function calls
+       * Loops
+   Can data be split and operated on in parallel?
+       * Decomposition of arrays along rows, columns, blocks
+       * Decomposition of trees into sub-trees
+   Is there a pipeline with a sequence of stages?
+       * Data preprocessing and analysis
+       * Graphics rendering
+
+3. Identify the nature of the parallelism
+
+   * **Linear** - Embarrassingly parallel programs
+   * **Recursive** - Adaptive partitioning methods
+
+4. Determine the granularity
+
+   * 10s of jobs
+   * 1,000s of jobs
+
+5. Choose an algorithm
+
+   Organize by tasks
+       * Task parallelism
+       * Divide and conquer
+   Organize by data
+       * Geometric decomposition
+       * Recursive decomposition
+   Organize by flow
+       * Pipeline
+       * Event-based processing
+
+6. Map to program and data structures
+
+   Program structures
+      * Single program multiple data (SPMD)
+      * Master/worker
+      * Loop parallelism
+      * Fork/join
+   Data structures
+      * Shared data
+      * Shared queue
+      * Distributed array
+
+7. Map to parallel environment
+
+    Multi-core shared memory
+       * Cython with OpenMP
+       * multiprocessing
+       * IPython.cluster
+    Multi-computer
+       * IPython.cluster
+       * MPI
+       * Hadoop / Spark
+    GPU
+       * CUDA
+       * OpenCL
+
+8. Execute, debug, tune in parallel environment
+
+
+.. note:: This is a long list, the details of which are not
+          part of the essentials of this lesson. Rather, it is
+          important that you understand that there is a detailed process
+          associated with working in a parallel environment.
+
+Getting application and function time
+=======================================
+
+There are several ways to get application run time.  The
+`Python Debugger <https://docs.python.org/3/library/pdb.html>`_ is an excellent way to step through code.  This is one
+way to identify troublesome sections of code, but it is not always the best way to compare multiple functions meant for
+the same task.  Here is a simple script that can be applied to any start and stop for a section of code:
+
+.. literalinclude:: ./scripts/howto-runtime.py
+
+The `timeit functions <https://docs.python.org/3/library/timeit.html#basic-examples>`_ that are available through the
+command-line interface or the interactive Python interface are commonly used to compare specific different
+implementations of code.
+
+.. code-block:: python
+
+    import numpy as np
+
+    def special_squares(n):
+        v = np.arange(n)
+        return v[v%2==0]**2
+
+    n = 1000000
+    %timeit special_squares(n)
+

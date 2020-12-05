@@ -1,0 +1,452 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Matrix norms and more &mdash; Math Essentials</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Matrix Decompositions" href="matrix-decomposition.html" />
+    <link rel="prev" title="Properties of Matrices" href="matrix-properties.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Linear Algebra:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro-math.html">Thinking in terms of vectors and matrices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-operations.html">Matrix operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-properties.html">Properties of Matrices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix norms and more</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#norms-and-other-special-matrices">Norms and other special matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#special-matrices">Special matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#systems-of-equations">Systems of equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-properties-of-matrices">Additional Properties of Matrices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matrix-decomposition.html">Matrix Decompositions</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="helpful-math.html">Helpful math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calculus-1.html">Calculus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy-commands.html">NumPy Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extra-numpy.html">Additional NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works cited</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LEARN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="http://127.0.0.1:5000/dashboard">Lesson Dashboard</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://learn-2.galvanize.com">Checkpoints Overview</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Matrix norms and more</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="matrix-norms-and-more">
+<h1>Matrix norms and more<a class="headerlink" href="#matrix-norms-and-more" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 96%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Understand some applications of and basic fundamentals of <strong>norms</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Extend the concept of a norm to cosine similarity</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Develop a familiarity with systems of equations and their linear algebra shorthand</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="norms-and-other-special-matrices">
+<h2>Norms and other special matrices<a class="headerlink" href="#norms-and-other-special-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is necessary to quantify the size of a vector. There is a specific function called a <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">called a norm</a> that serves this purpose.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/vector.png"><img alt="vector" src="_images/vector.png" style="width: 293.25px; height: 261.75px;" /></a>
+</div>
+<p>Here is an example of norm of a vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is defined by</p>
+<div class="math notranslate nohighlight">
+\[||\mathbf{x}|| = \sqrt{x_1^2 + x_2^2 + \cdots + x_n^2}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="go">5.47722557505</span>
+<span class="go">5.47722557505</span>
+</pre></div>
+</div>
+<p>The norm shown above is also known as Frobenius norm. The Frobenius
+norm, sometimes also called the Euclidean norm (a term unfortunately
+also used for the vector-norm), is norm of an matrix defined as the
+<strong>square root of the sum of the absolute squares of its elements</strong>.  The
+following is a generalized way to write many types of norms.</p>
+<div class="math notranslate nohighlight">
+\[||\mathbf{x}||_{p} =  \left( \sum_{i} |x_i|^{p} \right)^{\frac{1}{p}}\]</div>
+<ul class="simple">
+<li><p>Norms are used to map vectors to non-negative values</p></li>
+<li><p>The Euclidean norm (where <span class="math notranslate nohighlight">\(p=2\)</span> ) of a vector measures the distance from the origin in Euclidean space</p></li>
+</ul>
+<p>There are many nice properties of the Euclidean norm.  The norm squared of a vector is just the vector
+dot product with itself</p>
+<div class="math notranslate nohighlight">
+\[||x||^2 = x \cdot x\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">))</span>
+<span class="go">30</span>
+<span class="go">30</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The distance between two vectors is the norm of the difference.</p>
+<div class="math notranslate nohighlight">
+\[d(x,y) = ||x-y||\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">y</span><span class="p">)</span>
+<span class="go">4.472</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Cosine Similarity</strong> is the cosine of the angle between the two vectors give by</p>
+<div class="math notranslate nohighlight">
+\[cos(\theta) = \frac{\mathbf{x} \cdot \mathbf{y}}{||\mathbf{x}|| \text{ } ||\mathbf{y}||}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="go">0.96886393162696616</span>
+</pre></div>
+</div>
+<p>If both <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are zero-centered, this calculation is the <strong>correlation</strong> between <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_centered</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_centered</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_centered</span><span class="p">,</span><span class="n">y_centered</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x_centered</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">y_centered</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r2</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">x_centered</span><span class="p">,</span><span class="n">y_centered</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span><span class="n">r2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">1.0 1.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="special-matrices">
+<h2>Special matrices<a class="headerlink" href="#special-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a matrix of dimension <span class="math notranslate nohighlight">\(n \times k\)</span> and let <span class="math notranslate nohighlight">\(Y\)</span> be a matrix
+of dimension <span class="math notranslate nohighlight">\(k \times p\)</span>, then the product <span class="math notranslate nohighlight">\(XY\)</span> will be a matrix of
+dimension <span class="math notranslate nohighlight">\(n \times p\)</span> whose <span class="math notranslate nohighlight">\((i,j)^{th}\)</span> element is given by the dot
+product of the <span class="math notranslate nohighlight">\(i^{th}\)</span> row of <span class="math notranslate nohighlight">\(X\)</span> and the <span class="math notranslate nohighlight">\(j^{th}\)</span> column of <span class="math notranslate nohighlight">\(Y\)</span></p>
+<div class="math notranslate nohighlight">
+\[\sum_{s=1}^k x_{is}y_{sj} = x_{i1}y_{1j} + \cdots + x_{ik}y_{kj}\]</div>
+<p><strong>Orthogonal Matrices</strong></p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be an <span class="math notranslate nohighlight">\(n \times n\)</span> matrix such than <span class="math notranslate nohighlight">\(X^TX = I\)</span>, then <span class="math notranslate nohighlight">\(X\)</span> is said to be orthogonal which implies that <span class="math notranslate nohighlight">\(X^T=X^{-1}\)</span></p>
+<p>This is equivalent to saying that the columns of <span class="math notranslate nohighlight">\(X\)</span> are all orthogonal to each other (and have unit length).</p>
+</div>
+<div class="section" id="systems-of-equations">
+<h2>Systems of equations<a class="headerlink" href="#systems-of-equations" title="Permalink to this headline">¶</a></h2>
+<p>A system of equations of the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+a_{11}x_1 + \cdots + a_{1n}x_n &amp;= b_1 \\
+\vdots \hspace{1in} \vdots \\
+a_{m1}x_1 + \cdots + a_{mn}x_n &amp;= b_m
+\end{align*}\end{split}\]</div>
+<p>can be written as a matrix equation:</p>
+<div class="math notranslate nohighlight">
+\[A\mathbf{x} = \mathbf{b}\]</div>
+<p>and hence, has solution</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x} = A^{-1}\mathbf{b}\]</div>
+</div>
+<div class="section" id="additional-properties-of-matrices">
+<h2>Additional Properties of Matrices<a class="headerlink" href="#additional-properties-of-matrices" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are both <span class="math notranslate nohighlight">\(n \times p\)</span> matrices,then</p>
+<div class="math notranslate nohighlight">
+\[X+Y = Y+X\]</div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(Z\)</span> are all <span class="math notranslate nohighlight">\(n \times p\)</span> matrices, then</p>
+<div class="math notranslate nohighlight">
+\[X+(Y+Z) = (X+Y)+Z\]</div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span>, and <span class="math notranslate nohighlight">\(Z\)</span> are all conformable,then</p>
+<div class="math notranslate nohighlight">
+\[X(YZ) = (XY)Z\]</div>
+</li>
+</ol>
+<p>4. If <span class="math notranslate nohighlight">\(X\)</span> is of dimension <span class="math notranslate nohighlight">\(n \times k\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> and
+<span class="math notranslate nohighlight">\(Z\)</span> are of dimension <span class="math notranslate nohighlight">\(k \times p\)</span>, then</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[X(Y+Z) = XY + XZ\]</div>
+</div></blockquote>
+<p>5. If <span class="math notranslate nohighlight">\(X\)</span> is of dimension <span class="math notranslate nohighlight">\(p \times n\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> and
+<span class="math notranslate nohighlight">\(Z\)</span> are of dimension <span class="math notranslate nohighlight">\(k \times p\)</span>, then</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[(Y+Z)X = YX + ZX\]</div>
+</div></blockquote>
+<ol class="arabic" start="6">
+<li><p>If <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are real numbers, and <span class="math notranslate nohighlight">\(X\)</span> is an <span class="math notranslate nohighlight">\(n \times p\)</span> matrix, then</p>
+<div class="math notranslate nohighlight">
+\[(a+b)X = aX+bX\]</div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(a\)</span> is a real number, and <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are both <span class="math notranslate nohighlight">\(n \times p\)</span> matrices,then</p>
+<div class="math notranslate nohighlight">
+\[a(X+Y) = aX+aY\]</div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(z\)</span> is a real number, and <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are conformable, then</p>
+<div class="math notranslate nohighlight">
+\[X(aY) = a(XY)\]</div>
+</li>
+</ol>
+<p>Here is an  Jupyter notebook that reviews much of these materials</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference download internal" download="" href="_downloads/c9479e708b2a3d612383c735e0d6350f/linear-algebra-review.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">./notebooks/linear-algebra-review.ipynb</span></code></a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="matrix-decomposition.html" class="btn btn-neutral float-right" title="Matrix Decompositions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="matrix-properties.html" class="btn btn-neutral float-left" title="Properties of Matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+  
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

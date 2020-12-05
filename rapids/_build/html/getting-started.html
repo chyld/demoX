@@ -1,0 +1,583 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; RAPIDS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="cuDF" href="analytics.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RAPIDS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-rapids-locally">Installing RAPIDS locally</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-rapids-in-google-colab">Installing RAPIDS in Google Colab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-hello-world">A hello world</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecosystem-overview">Ecosystem Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-to-end-data-science">End-to-end data science</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component-libraries">Component libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#partners">Partners</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#check-for-understanding">Check for Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">cuDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">cuML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="review.html">Review</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 24%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Getting Started</p></td>
+<td><p>Describe the main components of the RAPIDS ecosystem and install a working environment</p></td>
+</tr>
+</tbody>
+</table>
+<p>We will be installing an environment to leverage NVIDIA <a class="reference external" href="https://developer.nvidia.com/rapids">RAPIDS</a>, an open-source
+suite of software libraries, built on <a class="reference external" href="https://www.nvidia.com/en-us/technologies/cuda-x">CUDA-X</a>.  Historically,
+At the core of this system is the <a class="reference external" href="https://en.wikipedia.org/wiki/Parallel_computing">parallel computing</a> platform,
+<a class="reference external" href="https://en.wikipedia.org/wiki/CUDA">CUDA®</a>.</p>
+<p>CUDA-X has two main library variants: CUDA-X AI and CUDA-X-HPC.  The term CUDA-X uses a number of
+<a class="reference external" href="https://developer.nvidia.com/gpu-accelerated-libraries">GPU accelerated libraries</a> as building blocks.  Some of the
+most important ones are:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="simple">
+<dt><a class="reference external" href="https://developer.nvidia.com/cublas">cuBLAS</a></dt><dd><p>The linear algebra library BLAS.</p>
+</dd>
+<dt><a class="reference external" href="https://developer.nvidia.com/cuda-math-library">CUDA Math Library</a></dt><dd><p>Basic math functions and some statistics</p>
+</dd>
+<dt><a class="reference external" href="https://developer.nvidia.com/curand">cuRAND</a></dt><dd><p>Random number generation</p>
+</dd>
+<dt><a class="reference external" href="https://developer.nvidia.com/cusparse">cuSPARSE</a></dt><dd><p>BLAS for sparse matrices</p>
+</dd>
+<dt><a class="reference external" href="https://developer.nvidia.com/cudnn">cuDNN</a></dt><dd><p>Library of primatives for deep neural networks</p>
+</dd>
+<dt><a class="reference external" href="https://developer.nvidia.com/nvidia-jarvis">NVIDIA Jarvis</a></dt><dd><p>Platform for developing AI powered conversation apps</p>
+</dd>
+</dl>
+<p>To use the above libraries much of the code needs to be written in C/C++.  The packages
+<a class="reference external" href="https://documen.tician.de/pycuda/">PyCUDA</a> and <a class="reference external" href="https://scikit-cuda.readthedocs.io/en/latest/">scikit-cuda</a> are
+reasonable ways to access these libraries directly from the Python ecosystem.  However, it is possible that some of your code
+(called the kernel) would still need to be in C++. It is good to know that these libraries are accessible, but
+much of the day-to-day data science that needs to be carried out requires that most of these libraries function
+<em>under the hood</em>.  RAPIDS was created with users in mind that are one level removed from this level of coding abstraction.</p>
+<div class="section" id="installing-rapids-locally">
+<h2>Installing RAPIDS locally<a class="headerlink" href="#installing-rapids-locally" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="https://rapids.ai/start.html">RAPIDS getting started documentation</a>.  If you do not have access to a GPU
+the skip this section and begin with the <cite>Installing RAPIDS in Google Colab</cite>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>RAPIDS can only be installed on Ubuntu and CentOS systems</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>RAPIDS no longer uses PIP and the base install
+<a class="reference external" href="https://medium.com/rapids-ai/rapids-0-7-release-drops-pip-packages-47fc966e9472">now uses conda</a></p>
+</div>
+<p>Enusre that you refer to the above documentation for the latest information on installation.
+If you do not have one of these operating systems installed then you should skip to the Google Colab section as well.</p>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>GPU: NVIDIA Pascal™ or better with compute capability 6.0+</p></li>
+<li><p>OS: Ubuntu 16.04/18.04/20.04 or CentOS 7 with gcc/++ 7.5+</p></li>
+<li><p>Docker: Docker CE v19.03+ and nvidia-container-toolkit</p></li>
+<li><p>CUDA &amp; NVIDIA Drivers: One of the following supported versions:</p>
+<blockquote>
+<div><p>10.0 &amp; v410.48+    10.1.2 &amp; v418.87+    10.2 &amp; v440.33+</p>
+</div></blockquote>
+</li>
+</ul>
+<p>The following script can help you determine what is installed on your system.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/bash</span>
+
+<span class="nv">$echo</span> lsb_release -a 
+<span class="nv">$echo</span> python --version
+<span class="nv">$echo</span> docker --version
+<span class="nv">$echo</span> lspci <span class="p">|</span> grep VGA
+<span class="nv">$echo</span> nvidia-smi --query-gpu<span class="o">=</span>driver_version --format<span class="o">=</span>csv
+<span class="nv">$echo</span> nvcc --version
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Distributor ID:     Ubuntu
+Description:        Ubuntu 20.04 LTS
+Release:    20.04
+Codename:   focal
+Python 3.7.8
+Docker version 19.03.12, build 48a66213fe
+01:00.0 VGA compatible controller: NVIDIA Corporation GP104BM [GeForce GTX 1070 Mobile] (rev a1)
+driver_version
+440.100
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2019 NVIDIA Corporation
+Built on Sun_Jul_28_19:07:16_PDT_2019
+Cuda compilation tools, release 10.1, V10.1.243
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you are missing CUDA, conda can install it for you, but you will need the NVIDIA driver installed before running
+the next command.</p>
+</div>
+<p>If you install with conda it will likely look something like the following, but again use the
+<a class="reference external" href="https://rapids.ai/start.html">RAPIDS getting started documentation</a> to perform your install ensuring that you
+construct the install args correctly.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~$ docker pull rapidsai/rapidsai:cuda10.2-runtime-ubuntu18.04
+~$ docker run --gpus all --rm -it -p <span class="m">8888</span>:8888 -p <span class="m">8787</span>:8787 -p <span class="m">8786</span>:8786 <span class="se">\</span>
+rapidsai/rapidsai:cuda10.2-runtime-ubuntu18.04
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="https://rapids.ai/start.html">RAPIDS getting started documentation</a> for more information on other variants.</p>
+</div>
+</div>
+<div class="section" id="installing-rapids-in-google-colab">
+<h2>Installing RAPIDS in Google Colab<a class="headerlink" href="#installing-rapids-in-google-colab" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Install RAPIDS
+!git clone https://github.com/rapidsai/rapidsai-csp-utils.git
+!bash rapidsai-csp-utils/colab/rapids-colab.sh stable
+
+import sys, os
+
+dist_package_index = sys.path.index(&#39;/usr/local/lib/python3.6/dist-packages&#39;)
+sys.path = sys.path[:dist_package_index] + [&#39;/usr/local/lib/python3.6/site-packages&#39;] + sys.path[dist_package_index:]
+sys.path
+exec(open(&#39;rapidsai-csp-utils/colab/update_modules.py&#39;).read(), globals())
+</pre></div>
+</div>
+<div class="admonition-todo admonition">
+<p class="admonition-title">TODO</p>
+<p>Need to complete this with our own Colab notebooks</p>
+</div>
+</div>
+<div class="section" id="a-hello-world">
+<h2>A hello world<a class="headerlink" href="#a-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>The data are available from as a traffic accident data set.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/sobhanmoosavi/us-accidents/data">https://www.kaggle.com/sobhanmoosavi/us-accidents/data</a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">cudf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">def</span> <span class="nf">print_time</span><span class="p">(</span><span class="n">start</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;convenience function to print runtime&quot;&quot;&quot;</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># load data as you normally would into pandas and print some means</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;..&quot;</span><span class="p">,</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;US_Accidents_June20.csv&quot;</span><span class="p">)</span>
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Distance(mi)&quot;</span><span class="p">,</span> <span class="s2">&quot;Precipitation(in)&quot;</span><span class="p">,</span> <span class="s2">&quot;Temperature(F)&quot;</span><span class="p">,</span> <span class="s2">&quot;Wind_Speed(mph)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Severity&quot;</span><span class="p">]</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">numeric_cols</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">print_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+
+<span class="c1"># load data with cuDF and print some means</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">cudf</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;US_Accidents_June20.csv&quot;</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">print_time</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Distance(mi)          0.281617
+Precipitation(in)     0.015983
+Temperature(F)       61.935119
+Wind_Speed(mph)       8.219025
+Severity              2.339929
+0:00:23
+
+Distance(mi) 0.28
+Precipitation(in) 0.02
+Temperature(F) 61.94
+Wind_Speed(mph) 8.22
+Severity 2.34
+0:00:02
+</pre></div>
+</div>
+</div>
+<div class="section" id="ecosystem-overview">
+<h2>Ecosystem Overview<a class="headerlink" href="#ecosystem-overview" title="Permalink to this headline">¶</a></h2>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/cuda-x-ai-ecosystem.png"><img alt="galvanize-logo" src="_images/cuda-x-ai-ecosystem.png" style="width: 645.0px; height: 270.5px;" /></a>
+</div>
+<p>RAPIDS is capable of executing end-to-end data science and analytics pipelines entirely on GPUs and in this lesson
+we will survey the available tooling, provide some context for how the different tools work, get hand-on with several
+examples of this exciting addition to the data science ecosystem.</p>
+<div class="section" id="key-features">
+<h3>Key features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Hassle-Free Integration</strong> - Accelerate your Python data science toolchain with minimal code changes and no new tools to learn</p></li>
+<li><p><strong>Model Accuracy</strong> - Increase machine learning model accuracy by iterating on models faster and deploying them more frequently</p></li>
+<li><p><strong>Reduced Training Time</strong> - Reduce iteration time on your development workflow</p></li>
+<li><p><strong>Open Source</strong> - Customizable, extensible software supported by NVIDIA and built on <a class="reference external" href="https://arrow.apache.org/">Apache Arrow</a></p></li>
+</ol>
+</div>
+<div class="section" id="end-to-end-data-science">
+<h3>End-to-end data science<a class="headerlink" href="#end-to-end-data-science" title="Permalink to this headline">¶</a></h3>
+<p>NVIDIA makes the claim that RAPIDS is an end-to-end data science platform.  See
+the <a class="reference external" href="https://developer.nvidia.com/blog/gpu-accelerated-analytics-rapids/">GPU accelerated blog</a>.  The following figure
+makes the claim that the data professional can spend more time in analysis mode.</p>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/a-day-in-the-life.png"><img alt="galvanize-logo" src="_images/a-day-in-the-life.png" style="width: 512.0px; height: 205.0px;" /></a>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>There is a trade-off between the speed of our code and the quality of our code when we can go from idea to minimal
+viable product.  Is it worth it to spend our initial development iterations on an idea using RAPIDS?</p>
+</div>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/rapids-pipeline.png"><img alt="galvanize-logo" src="_images/rapids-pipeline.png" style="width: 512.0px; height: 191.0px;" /></a>
+</div>
+</div>
+<div class="section" id="component-libraries">
+<h3>Component libraries<a class="headerlink" href="#component-libraries" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt><a class="reference external" href="https://github.com/rapidsai/cudf">cuDF</a>:</dt><dd><p>A GPU DataFrame library with a pandas-like API. cuDF provides operations on data columns including unary and binary
+operations, filters, joins, and groupbys. cuDF currently comprises the Python library PyGDF, and the C++/CUDA GPU
+DataFrames implementation in libgdf. These two libraries are being merged into cuDF. See the documentation for more
+details and examples.</p>
+</dd>
+<dt>cuSKL:</dt><dd><p>A collection of machine learning algorithms that operate on GPU DataFrames. cuSKL enables data scientists, researchers,
+and software engineers to run traditional ML tasks on GPUs without going into the details of CUDA programming from Python.</p>
+</dd>
+<dt>XGBoost:</dt><dd><p>XGBoost is one of the most popular machine learning packages for training gradient boosted decision trees. Native
+cuDF support allows you to  pass data directly to XGBoost while remaining in GPU memory.</p>
+</dd>
+<dt>cuML:</dt><dd><p>a GPU-accelerated library of machine learning algorithms including Singular Value Decomposition (SVD), Principal
+Component Analysis (PCA), Density-based Spatial Clustering of Applications with Noise (DBSCAN).</p>
+</dd>
+<dt>ml-prims</dt><dd><p>A library of low-level math and computational primitives used by cuML.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="partners">
+<h3>Partners<a class="headerlink" href="#partners" title="Permalink to this headline">¶</a></h3>
+<div class="align-center figure">
+<a class="reference internal image-reference" href="_images/rapids_community.png"><img alt="galvanize-logo" src="_images/rapids_community.png" style="width: 708.5px; height: 583.0px;" /></a>
+</div>
+<p>Dask integrates well with RAPIDS, but what about Spark.  See the
+<a class="reference external" href="https://docs.dask.org/en/latest/spark.html">Dask compared to Spark document for more info</a></p>
+</div>
+</div>
+<div class="section" id="check-for-understanding">
+<h2>Check for Understanding<a class="headerlink" href="#check-for-understanding" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>placeholder, placeholder</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Only look at the f-score of the negative class for evaluation</p></li>
+<li><p><strong>(B)</strong>: Use recall as the evaluation metric</p></li>
+<li><p><strong>(C)</strong>: Use precision as the evaluation metric</p></li>
+<li><p><strong>(D)</strong>: Set beta to 0.5 in the fscore</p></li>
+<li><p><strong>(E)</strong>: Set beta to 2.0 in the fscore</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(E)</strong></p>
+<div class="math notranslate nohighlight">
+\[F_{\beta} = (1 + \beta^{2})
+\frac{\mbox{precision} \times \mbox{recall}} {(\beta^{2} \times \mbox{precision}) + \mbox{recall}}\]</div>
+<p>If we set, for example, <span class="math notranslate nohighlight">\(\beta = 2\)</span> then the metric weighs recall higher than precision.
+Conversely, with <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> precision is given more importance than recall.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  All classifiers in scikit-learn do multi-class classification out-of-the-box.  The classifiers can
+differ in their approach though (e.g one-vs-all or one-vs-one).</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(True)</strong> Some classification models are inherently multi-class like the naïve Bayes. Some classifiers
+default to a one-vs-one, where a different classifier is trained for all pairwise model comparisons. Other
+classifiers use a one-vs-all approach where there is a classifier for each model.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://rapids.ai/start.html">RAPIDS getting started documentation</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="analytics.html" class="btn btn-neutral float-right" title="cuDF" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #000099;
+      max-width: none;
+  }
+  </style>
+
+
+</body>
+</html>

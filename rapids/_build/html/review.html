@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Review &mdash; RAPIDS</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Works Cited" href="references.html" />
+    <link rel="prev" title="Gallery" href="gallery.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html">
+          
+
+          
+            
+            <img src="_static/galvanize-logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">RAPIDS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analytics.html">cuDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine-learning.html">cuML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gallery.html">Gallery</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Review</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unit-1">Unit 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#regression">Regression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classification">Classification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linear-models">Linear models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#evaluation-metrics">Evaluation metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Linear models</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial-watson-nlu">TUTORIAL: Watson NLU</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-study-nlp">CASE STUDY: NLP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tree-based-methods">Tree-based methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#neural-networks">Neural networks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tutorial-watson-visual-recognition">TUTORIAL: Watson visual recognition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#case-study-tensorflow">CASE STUDY: TensorFlow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendices:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">Works Cited</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Review</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="review">
+<h1>Review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h1>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 5%" />
+<col style="width: 27%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit</p></th>
+<th class="head"><p>Main Topics</p></th>
+<th class="head"><p>Learning Objectives</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Predictive Linear Models</p></td>
+<td><p>Explain the use of linear models in supervised learning applications</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>GLMs</p></td>
+<td><p>Describe the difference between GLMs and GLMMs and name examples of each</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>statsmodels</p></td>
+<td><p>Use the availabe model building tools in stats models</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>CASE STUDY: GLMs</p></td>
+<td><p>Build a GLM using statsmodels and properly interpret the output</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="unit-1">
+<h2>Unit 1<a class="headerlink" href="#unit-1" title="Permalink to this headline">¶</a></h2>
+<p>Supervised learning is the focus of this course, but it should be seen in the context of the other learning fields.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Unsupervised_learning">unsupervised learning</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Semi-supervised_learning">semi-supervised learning</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a></p></li>
+</ul>
+<p>As a reminder the type of <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> depends on the data
+type of the target. The <em>supervised learning</em> problem is referred to as either</p>
+<dl class="simple">
+<dt><strong>Regression</strong> (when <span class="math notranslate nohighlight">\(Y\)</span> is real-valued)</dt><dd><p>e.g., if you are predicting price, demand, or number of subscriptions.</p>
+</dd>
+</dl>
+<p>or</p>
+<dl class="simple">
+<dt><strong>Classification</strong> (when <span class="math notranslate nohighlight">\(Y\)</span> is categorical)</dt><dd><p>e.g., if you are predicting fraud or churn</p>
+</dd>
+</dl>
+<div class="section" id="regression">
+<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
+<p>The two following metrics are the most commonly used.</p>
+<div class="math notranslate nohighlight">
+\[\textrm{MAE} = \frac{1}{N} \sum^{n}_{i=1} \left| \hat{y}_{i} - y_{i} \right|\]</div>
+<div class="math notranslate nohighlight">
+\[\textrm{RMSE} = \sqrt{\frac{1}{N} \sum^{n}_{i=1} \left( \hat{y}_{i} - y_{i} \right)^{2}}\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">root mean square error (RMSE)</a> can be calculated in
+several ways and it is equivalent to the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Sample_standard_deviation">sample standard deviation</a> of the differences.
+The mean absolute error (MAE) is another commonly used metric in regression problems.  A major advantage of RMSE and
+MAE is that the values are interpreted in the same units as the original data.  MAE is the average of the absolute
+difference between the predicted values and observed value. Unlike RMSE all of the individual scores are weighted
+equally during the averaging.   <strong>The squaring of the term in RMSE results in a higher penalty on larger differences
+when compared to MAE</strong>.</p>
+</div>
+<div class="section" id="classification">
+<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
+<p>Most classification metrics start from a <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">confusion matrix</a>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 35%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Predicted False <span class="math notranslate nohighlight">\((\hat Y = 0)\)</span></p></th>
+<th class="head"><p>Predicted True <span class="math notranslate nohighlight">\((\hat Y = 1)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>True <span class="math notranslate nohighlight">\((Y = 0)\)</span></p></td>
+<td><p>True Negatives <span class="math notranslate nohighlight">\((TN)\)</span></p></td>
+<td><p>False Positive <span class="math notranslate nohighlight">\((FP)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>True <span class="math notranslate nohighlight">\((Y = 1)\)</span></p></td>
+<td><p>False Negatives <span class="math notranslate nohighlight">\((FN)\)</span></p></td>
+<td><p>True Positives <span class="math notranslate nohighlight">\((TP)\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="math notranslate nohighlight">
+\[\textrm{accuracy} = \frac{tp+tn}{tp + fp + tn + fn}\]</div>
+<div class="math notranslate nohighlight">
+\[\textrm{precision} = \frac{tp}{tp + fp}\]</div>
+<div class="math notranslate nohighlight">
+\[\textrm{recall} = \frac{tp}{tp + fn}\]</div>
+<p>The F1_score is the <a class="reference external" href="https://en.wikipedia.org/wiki/Harmonic_mean#Harmonic_mean_of_two_numbers">harmonic mean</a> of
+precision and recall.  There are different variants of the F1_score, notably the <span class="math notranslate nohighlight">\(F_{\beta}\)</span> score.</p>
+<div class="math notranslate nohighlight">
+\[\mbox{F1_score} = \frac{2}{ \frac{1}{\mbox{recall}} + \frac{1}{\mbox{precision}}}\]</div>
+<p>There are also several ways to average the F1_score when working in multi-class applications (e.g. weighted, micro,
+macro). The <code class="docutils literal notranslate"><span class="pre">average</span></code> parameter can significantly change the behavior and performance of your model especially when
+the classes are imbalanced.</p>
+<div class="section" id="linear-models">
+<h4>Linear models<a class="headerlink" href="#linear-models" title="Permalink to this headline">¶</a></h4>
+<p>All of these models make use of the following function:</p>
+<div class="math notranslate nohighlight">
+\[\hat{y}(\mathbf{x},\mathbf{w}) = w_{0} + w_{1} x_{1}, + \ldots + w_{p} x_{p},\]</div>
+<p>The target <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> could be a column vector or a matrix in the multivariate case.  There are <span class="math notranslate nohighlight">\(p\)</span> features
+and <span class="math notranslate nohighlight">\(p\)</span> coefficients.  The intercept is written here as <span class="math notranslate nohighlight">\(w_{0}\)</span>.  If <span class="math notranslate nohighlight">\(p&gt;1\)</span> then we are under the
+category of <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_linear_regression">multiple linear regression</a> a very common variant
+in the data science application space.  The <span class="math notranslate nohighlight">\(w_{i}\)</span>:’s are parameters or <em>weights</em>.</p>
+<p>Many of the linear models that are commonly used in data science like linear regression, the t-test and ANOVA are
+examples of the <a class="reference external" href="https://en.wikipedia.org/wiki/General_linear_model">general linear model</a>.  If we relax the
+assumption that residuals can only be normally distributed and we introduce the concept of a link function then
+we extend into <a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">generalized linear models</a>, of which logistic
+regression is the best example.  One extension further from GLMs brings us into the family of models known as
+<a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_mixed_model">generalized linear mixed models (GLMM)</a>.  GLMMs contain
+some of the most flexible and useful linear models available with the best example being
+<a class="reference external" href="https://en.wikipedia.org/wiki/Multilevel_model">multilevel models</a>.</p>
+<p>With each extension comes the need for more sophisticated model inference methods.  For example, GLMMs generally require
+Bayesian inference methods like <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">MCMC</a> sampling, while simple
+linear regression can be carried out with
+<a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares</a> approaches.</p>
+<p>Gradient decent can also be used for inference for several methods including support vector machines and logistic
+regression.  It is a powerful and flexible way to carry out inference on linear models and the results can compare
+favorably to even more sophisticated models.</p>
+<p>Linear models also have a number of extensions including kernels and splines that enable non-linear functions.  The
+level of model interpretation that is available with linear models and ease of implementation make them a safe choice
+for a baseline model.  A baseline model is the one that you default to if a more sophisticated model cannot be shown to
+have superior performance.</p>
+<div class="section" id="quiz">
+<h5>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<div class="section" id="evaluation-metrics">
+<h4>Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>If we have a situation where false positive is not as potentially costly as a false negative say flagging comments
+for manual review based on suspected unlawful activity, which of the following is the best approach to consider?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Only look at the f-score of the negative class for evaluation</p></li>
+<li><p><strong>(B)</strong>: Use recall as the evaluation metric</p></li>
+<li><p><strong>(C)</strong>: Use precision as the evaluation metric</p></li>
+<li><p><strong>(D)</strong>: Set beta to 0.5 in the fscore</p></li>
+<li><p><strong>(E)</strong>: Set beta to 2.0 in the fscore</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(E)</strong></p>
+<div class="math notranslate nohighlight">
+\[F_{\beta} = (1 + \beta^{2})
+\frac{\mbox{precision} \times \mbox{recall}} {(\beta^{2} \times \mbox{precision}) + \mbox{recall}}\]</div>
+<p>If we set, for example, <span class="math notranslate nohighlight">\(\beta = 2\)</span> then the metric weighs recall higher than precision.
+Conversely, with <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> precision is given more importance than recall.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  All classifiers in scikit-learn do multi-class classification out-of-the-box.  The classifiers can
+differ in their approach though (e.g one-vs-all or one-vs-one).</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(True)</strong> Some classification models are inherently multi-class like the naïve Bayes. Some classifiers
+default to a one-vs-one, where a different classifier is trained for all pairwise model comparisons. Other
+classifiers use a one-vs-all approach where there is a classifier for each model.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>Linear models<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>Which of the following is not an example of a <em>generalized linear model</em> (GLM)?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: ANOVA</p></li>
+<li><p><strong>(B)</strong>: t-test</p></li>
+<li><p><strong>(C)</strong>: F-test</p></li>
+<li><p><strong>(D)</strong>: KNN regression</p></li>
+<li><p><strong>(E)</strong>: Logistic regression</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(B)</strong> The <a class="reference external" href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">K nearest neighbors</a>
+algorithm can be effectively used for regression, but it is not an example of a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">Generalized linear model</a>.  The generalized
+linear models are special cases of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/General_linear_model">general linear models</a>.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  Models in the generalized linear mixture model (GLMM) family like multilevel models are generally optimized
+using sophisticated techniques like MCMC sampling.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(True)</strong>  With each extension from general linear models to generalized linear models to GLMMs comes the
+need for more sophisticated model inference methods.  GLMMs generally require Bayesian inference methods
+like <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo">MCMC</a> sampling, while simple linear
+regression can be carried out with
+<a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares">ordinary least squares</a> approaches.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="tutorial-watson-nlu">
+<h4>TUTORIAL: Watson NLU<a class="headerlink" href="#tutorial-watson-nlu" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>When you use Watson Services like Watson NLU via the Python SDK, what are the three items that need to be saved?
+These items are generally saved on a local machine and included in scripts and notebooks as imported variables.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: service version, service API key, service JSON map</p></li>
+<li><p><strong>(B)</strong>: service URL, service JSON map, service API key</p></li>
+<li><p><strong>(C)</strong>: service API key, service version, service URL</p></li>
+<li><p><strong>(D)</strong>: service version, service IAMAuthenticator, service URL</p></li>
+<li><p><strong>(E)</strong>: service API key, service URL, service IAMAuthenticator</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(C)</strong> The service uses JSON to pass messages, but there is no map to keep track of.  The IAMAuthenticator
+is the name of a class used from the SDK to access the services.  The URL, the API key and the version are
+the three critical pieces of information to keep track of.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>Which of the following does <strong>not</strong> describe a feature of the Watson NLU service?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Perform document classification tasks using a custom model built from text</p></li>
+<li><p><strong>(B)</strong>: Identify high-level concepts that aren’t necessarily directly referenced in the text</p></li>
+<li><p><strong>(C)</strong>: Find people, places, events, and other types of entities mentioned in your content</p></li>
+<li><p><strong>(D)</strong>: Recognize when two entities are related, and identify the type of relation</p></li>
+<li><p><strong>(E)</strong>: Analyze the sentiment toward specific target phrases and the sentiment of the document as a whole</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(A)</strong> The natural language understanding service can build custom models for entities and relations,
+but classification is not one of the features.  If needed there is a natural language classification
+Watson service. All of the other answers describe readily accessible features.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ibm.com/cloud/watson-natural-language-understanding">Watson Natural Language Understanding</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="case-study-nlp">
+<h4>CASE STUDY: NLP<a class="headerlink" href="#case-study-nlp" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>After investigating the relationship between churn and accuracy What can we say about how the website version might
+be affecting the rate of churn?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: The website version tends to increase churn</p></li>
+<li><p><strong>(B)</strong>: The website version tends to decrease churn</p></li>
+<li><p><strong>(C)</strong>: The website version did not appear to affect churn</p></li>
+<li><p><strong>(D)</strong>: The website version played a strong role in explaining churn</p></li>
+<li><p><strong>(E)</strong>: The website version directly affected the accuracy</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(D)</strong> See the solution for more details, but the website version and the accuracy together can be used
+to expalin 100% of the variance in the model.  This makes sense if you look carefully at the function
+used to create the data.  The role of the website version both positively and negatively affected churn,
+which can be seen in the plot.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>Which of the following is not an example of a relevant question when tuning a NLP classification pipeline?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Should I use bag-of-words or a vector embedding representation?</p></li>
+<li><p><strong>(B)</strong>: Which stop words do I include?</p></li>
+<li><p><strong>(C)</strong>: Which n-grams do I include?</p></li>
+<li><p><strong>(D)</strong>: Should I use a TF or a tf-idf transformation?</p></li>
+<li><p><strong>(E)</strong>: Should I use RMSE or MAE as an evaluation metric?</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(E)</strong> RMSE and MAE are evaluation metrics for <em>regression</em> not <em>classification</em>.  All of the other
+questions are relevant.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="tree-based-methods">
+<h4>Tree-based methods<a class="headerlink" href="#tree-based-methods" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>True/False.  Bagging and boosting ensemble methods both use only decision trees as base classifiers.  The difference
+is in the bias and variance of the individual trees.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(False)</strong> Bagging and boosting ensemble methods are not limited to decision trees as a choice for the
+base classifier. We showed in the bagging example the use of KNNs and SVMs as base classifiers.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  A decision tree classifier is useful as a model for the AAVAIL subscriber churn data.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(True)</strong> The shallow decision tree used as an example did a good job detecting the root cause of the
+differences between Singapore and USA based users.  Specifically, it was able to clearly identify that the
+problem was related to subscription type.  Additionally, the model was useful because it has comparable
+performance metrics to more sophisticated models and the tree can be visualized and accordingly used as
+a communication tool.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="neural-networks">
+<h4>Neural networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>Which of the following was not discussed as a tunable parameter of neural networks?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Hardware availability:</p></li>
+<li><p><strong>(B)</strong>: Activation functions: sigmoid, tanh, softmax, ReLU, leaky ReLU</p></li>
+<li><p><strong>(C)</strong>: Regularization techniques: weight decay, early stopping, dropout</p></li>
+<li><p><strong>(D)</strong>: Training method: Loss function, learning rate, batch size, number of epochs</p></li>
+<li><p><strong>(E)</strong>: Structure: the number of hidden layers, the number of nodes in each layer</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(A)</strong> The hardware availability is not a parameter of the neural network itself.  It is configurable
+in TensorFlow and in most deep-learning environments, but it is related to the compute environment rather
+than the model itself.  You can query the available devices with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="kn">import</span> <span class="n">device_lib</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">device_lib</span><span class="o">.</span><span class="n">list_local_devices</span><span class="p">())</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>Transfer learning is a recent advancement to come out of the field of reinforcement learning.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(False)</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/Transfer_learning">Transfer learning</a> is a strategy where you
+leverage vetted neural network architectures and pre-trained weights to get good performance on limited
+data.  <a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement learning</a> is an area of
+machine learning like supervised and unsupervised learning.  It generally uses neural network feature
+extraction and prediction abilities to learn from an environment.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="tutorial-watson-visual-recognition">
+<h4>TUTORIAL: Watson visual recognition<a class="headerlink" href="#tutorial-watson-visual-recognition" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>When training a custom classifier in Watson Visual Recognition the negative images should be:</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: As visually similar to the positive images as possible</p></li>
+<li><p><strong>(B)</strong>: Background images without the positive images</p></li>
+<li><p><strong>(C)</strong>: As random as possible to establish a background</p></li>
+<li><p><strong>(D)</strong>: Randomly generated from the positive images</p></li>
+<li><p><strong>(E)</strong>: Visually distinct from the positive images</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(A)</strong> When we train a custom classifier using the Watson Visual Recognition service a best practice is to
+include both positive and negative examples. Crucially, to increase the accuracy of the classifier, the
+negative examples should be as visually similar to the positive examples as possible.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.ibm.com/articles/cc-build-with-watson-tips-best-practices-custom-classifiers-visual-recognition/">Watson Visual Recognition best practices</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  The Watson Visual Recognition service can only be accessed using an API key via Python or curl.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(False)</strong> Other SDKs are available including Swift, Unity, Ruby, Java, Node, Go and .net. See the
+<a class="reference external" href="https://cloud.ibm.com/apidocs/visual-recognition/visual-recognition-v4">Watson Visual Recognition docs</a>
+for examples of each.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+<div class="section" id="case-study-tensorflow">
+<h4>CASE STUDY: TensorFlow<a class="headerlink" href="#case-study-tensorflow" title="Permalink to this headline">¶</a></h4>
+<div class="admonition-question-1 admonition">
+<p class="admonition-title">QUESTION 1</p>
+<p>Which of the following use cases is the least appropriate use case for a convolutional neural network?</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<ul class="simple">
+<li><p><strong>(A)</strong>: Image classification</p></li>
+<li><p><strong>(B)</strong>: Image retrieval</p></li>
+<li><p><strong>(C)</strong>: Image composition</p></li>
+<li><p><strong>(D)</strong>: Object detection</p></li>
+<li><p><strong>(E)</strong>: Image segmentation</p></li>
+</ul>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(C)</strong> Image composition was never discussed in the context of neural networks or as part of these materials.
+Image composition is more generally called photography composition and it deals with arranging the elements
+in an image to suit an idea or accomplish a goal.  All of the other applications were mentioned as
+practical applications of CNNs.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Contextual_image_classification">Image classification</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_segmentation">Image segmentation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_retrieval">Image retrieval</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Object_detection">Object detection</a></p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="admonition-question-2 admonition">
+<p class="admonition-title">QUESTION 2</p>
+<p>True/False.  A typical convolutional neural network is constructed using a combination of convolutional, pooling and
+dense layers.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<p><strong>True/False</strong></p>
+</div>
+<p><strong>ANSWER</strong>:</p>
+<blockquote>
+<div><p><strong>(True)</strong> The statement is true.  The <strong>convolutional layer</strong> of a deep neural network uses a
+convolutional filter to slide over an input matrix to identify patterns. The <strong>pooling layer</strong> reduces
+the size of its input matrix (or matrices) that are generally created by a convolutional layer.  The <strong>dense layers</strong> are the fully
+connected hidden layers generally used near the output layer part of the networks.</p>
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references.html" class="btn btn-neutral float-right" title="Works Cited" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gallery.html" class="btn btn-neutral float-left" title="Gallery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-XXXXXXX-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+    
+    
+
+  <style>
+    /* Sidebar header (and topbar for mobile) */
+    .wy-side-nav-search, .wy-nav-top {
+      background: #000099;
+      max-width: none;
+  }
+  </style>
+
+
+</body>
+</html>
