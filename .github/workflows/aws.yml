@@ -41,7 +41,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: 709440151559.dkr.ecr.us-west-1.amazonaws.com/chyld
+        ECR_REPOSITORY: chyld
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
