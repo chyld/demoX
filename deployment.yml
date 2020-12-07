@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: my-container
-        image: chyld/content:latest
+        image: 709440151559.dkr.ecr.us-west-2.amazonaws.com/chyld-oregon:latest
         ports:
         - containerPort: 80
 
