@@ -31,7 +31,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-1
+        aws-region: us-west-2
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -41,7 +41,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: chyld
+        ECR_REPOSITORY: chyld-oregon
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
